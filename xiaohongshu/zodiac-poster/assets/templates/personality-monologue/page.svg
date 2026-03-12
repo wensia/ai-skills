@@ -1,0 +1,63 @@
+<!-- [STYLE: 性格独白风] [TYPE: page] -->
+<svg width="1080" height="1440" viewBox="0 0 1080 1440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@300;400;500&amp;display=swap');
+    </style>
+    <linearGradient id="bgGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FAF6F1"/>
+      <stop offset="50%" stop-color="#F5EDE4"/>
+      <stop offset="100%" stop-color="#F0E6D9"/>
+    </linearGradient>
+    <linearGradient id="lightOverlay" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF" stop-opacity="0.3"/>
+      <stop offset="20%" stop-color="#FFF" stop-opacity="0"/>
+      <stop offset="80%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.03"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1080" height="1440" fill="url(#bgGradient)"/>
+  <rect width="1080" height="1440" fill="url(#lightOverlay)"/>
+
+  <!-- 页眉 -->
+  <g id="header">
+    <text x="100" y="130" font-family="Noto Serif SC, serif" font-size="32" font-weight="500" fill="#C4653A" letter-spacing="2">{{ZODIAC}}</text>
+    <text x="210" y="130" font-family="Georgia, serif" font-size="24" fill="#D4CFC8">·</text>
+    <text x="240" y="130" font-family="Noto Sans SC, sans-serif" font-size="24" font-weight="300" fill="#6B6461" letter-spacing="3">{{TOPIC}}</text>
+    <g transform="translate(924, 74) rotate(-10)">
+      {{ZODIAC_SVG}}
+    </g>
+  </g>
+
+  <!-- 章节标签 -->
+  <text x="100" y="220" font-family="Georgia, serif" font-size="26" fill="#C4653A" letter-spacing="8">PART {{PART_NUM}}</text>
+
+  <!-- 章节标题 -->
+  <text x="100" y="310" font-family="Noto Serif SC, serif" font-size="64" font-weight="600" fill="#3D3835" letter-spacing="6">{{SECTION_TITLE}}</text>
+
+  <!-- 分隔线 -->
+  <rect x="100" y="340" width="100" height="4" fill="#C4653A"/>
+
+  <!-- 正文内容 -->
+  <!-- 行间距 61px，起始 y=520 -->
+  <!-- 每行格式：<text y="N">文字</text> 或带高亮 <text y="N"><tspan fill="#3D3835">前</tspan><tspan fill="#C4653A">高亮</tspan><tspan fill="#3D3835">后</tspan></text> -->
+  <g id="content" transform="translate(100, 520)">
+    {{CONTENT_LINES}}
+  </g>
+
+  <!-- 引用区块 -->
+  <g id="quote" transform="translate(100, 1050)">
+    <!-- 左边框 -->
+    <line x1="0" y1="0" x2="0" y2="60" stroke="#C4653A" stroke-width="4"/>
+    <!-- 引用文字 -->
+    <text x="30" y="40" font-family="Noto Serif SC, serif" font-size="28" font-style="italic" fill="#6B6461" letter-spacing="2">"{{QUOTE}}"</text>
+  </g>
+
+  <!-- 页脚 -->
+  <g id="footer">
+    <line x1="100" y1="1350" x2="980" y2="1350" stroke="#D4CFC8" stroke-width="2"/>
+    <text x="980" y="1390" font-family="Georgia, serif" font-size="28" fill="#6B6461" text-anchor="end" letter-spacing="4">{{PAGE_NUM}}</text>
+  </g>
+</svg>

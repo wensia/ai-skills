@@ -1,0 +1,19 @@
+{
+  "id": "fresh-insight",
+  "name": "清新洞察风",
+  "description": "清新明亮配色、卡片式布局、点阵装饰、模糊圆形背景，适合深度解读和干货分享",
+  "accent_color": "#88D8B0",
+  "secondary_color": "#FFE566",
+  "background": "#FFF8E7",
+  "suitable_for": ["星座洞察", "性格分析", "干货分享", "深度解读"],
+  "page_types": ["cover", "page", "summary"],
+  "features": [
+    "卡片式内容布局",
+    "模糊圆形背景装饰",
+    "点阵网格装饰",
+    "黄色高亮标记",
+    "标签胶囊设计"
+  ],
+  "created_at": "2026-01-05",
+  "updated_at": "2026-01-05"
+}

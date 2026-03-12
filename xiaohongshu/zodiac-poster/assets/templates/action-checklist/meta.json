@@ -1,0 +1,16 @@
+{
+  "id": "action-checklist",
+  "name": "行动清单风",
+  "description": "深色背景、柠檬黄强调色、清单卡片式布局，适合行动指南、快乐法则、习惯养成类内容",
+  "accent_color": "#FFEF00",
+  "background": "深色渐变 (#0f1419 → #1a1f2e → #121620)",
+  "suitable_for": ["行动清单", "快乐法则", "习惯养成", "每日打卡", "互动投票"],
+  "fonts": ["PingFang SC", "Microsoft YaHei", "Georgia"],
+  "page_types": ["cover", "page", "summary"],
+  "canvas_size": {
+    "width": 1080,
+    "height": 1440
+  },
+  "created_at": "2026-01-05",
+  "updated_at": "2026-01-05"
+}

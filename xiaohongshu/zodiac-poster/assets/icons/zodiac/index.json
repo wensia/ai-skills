@@ -1,0 +1,24 @@
+{
+  "source": "Tabler Icons (MIT License)",
+  "url": "https://tabler.io/icons",
+  "style": {
+    "viewBox": "0 0 24 24",
+    "strokeWidth": 2,
+    "strokeLinecap": "round",
+    "strokeLinejoin": "round"
+  },
+  "signs": {
+    "白羊座": { "en": "aries", "file": "aries.svg", "symbol": "♈", "dates": "3/21-4/19", "element": "火象" },
+    "金牛座": { "en": "taurus", "file": "taurus.svg", "symbol": "♉", "dates": "4/20-5/20", "element": "土象" },
+    "双子座": { "en": "gemini", "file": "gemini.svg", "symbol": "♊", "dates": "5/21-6/21", "element": "风象" },
+    "巨蟹座": { "en": "cancer", "file": "cancer.svg", "symbol": "♋", "dates": "6/22-7/22", "element": "水象" },
+    "狮子座": { "en": "leo", "file": "leo.svg", "symbol": "♌", "dates": "7/23-8/22", "element": "火象" },
+    "处女座": { "en": "virgo", "file": "virgo.svg", "symbol": "♍", "dates": "8/23-9/22", "element": "土象" },
+    "天秤座": { "en": "libra", "file": "libra.svg", "symbol": "♎", "dates": "9/23-10/23", "element": "风象" },
+    "天蝎座": { "en": "scorpio", "file": "scorpio.svg", "symbol": "♏", "dates": "10/24-11/22", "element": "水象" },
+    "射手座": { "en": "sagittarius", "file": "sagittarius.svg", "symbol": "♐", "dates": "11/23-12/21", "element": "火象" },
+    "摩羯座": { "en": "capricorn", "file": "capricorn.svg", "symbol": "♑", "dates": "12/22-1/19", "element": "土象" },
+    "水瓶座": { "en": "aquarius", "file": "aquarius.svg", "symbol": "♒", "dates": "1/20-2/18", "element": "风象" },
+    "双鱼座": { "en": "pisces", "file": "pisces.svg", "symbol": "♓", "dates": "2/19-3/20", "element": "水象" }
+  }
+}

@@ -1,0 +1,124 @@
+<!-- [STYLE: 星际引力风] [TYPE: end] -->
+<svg width="1080" height="1440" viewBox="0 0 1080 1440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@300;400;500&amp;display=swap');
+    </style>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1525"/>
+      <stop offset="50%" stop-color="#252035"/>
+      <stop offset="100%" stop-color="#1E1A2E"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="40%" r="45%">
+      <stop offset="0%" stop-color="#A78BDA" stop-opacity="0.12"/>
+      <stop offset="50%" stop-color="#7DB8C9" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#1A1525" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="textGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A78BDA"/>
+      <stop offset="100%" stop-color="#7DB8C9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1080" height="1440" fill="url(#bgGradient)"/>
+  <rect width="1080" height="1440" fill="url(#centerGlow)"/>
+
+  <!-- 星星粒子（更密集） -->
+  <g id="stars">
+    <circle cx="150" cy="200" r="2" fill="#FFF" opacity="0.6"/>
+    <circle cx="890" cy="180" r="2.5" fill="#FFF" opacity="0.5"/>
+    <circle cx="320" cy="350" r="1.5" fill="#FFF" opacity="0.7"/>
+    <circle cx="780" cy="420" r="2" fill="#FFF" opacity="0.4"/>
+    <circle cx="200" cy="600" r="2.5" fill="#FFF" opacity="0.5"/>
+    <circle cx="920" cy="650" r="2" fill="#FFF" opacity="0.6"/>
+    <circle cx="130" cy="800" r="1.5" fill="#FFF" opacity="0.4"/>
+    <circle cx="850" cy="900" r="2" fill="#FFF" opacity="0.5"/>
+    <circle cx="250" cy="1050" r="2.5" fill="#FFF" opacity="0.4"/>
+    <circle cx="950" cy="1150" r="1.5" fill="#FFF" opacity="0.6"/>
+    <circle cx="180" cy="1250" r="2" fill="#FFF" opacity="0.3"/>
+    <circle cx="880" cy="1320" r="2" fill="#FFF" opacity="0.4"/>
+  </g>
+
+  <!-- 页眉 -->
+  <g id="header">
+    <text x="100" y="130" font-family="Noto Serif SC, serif" font-size="32" font-weight="500" fill="#A78BDA" letter-spacing="2">射手座 × 天蝎座</text>
+    <text x="310" y="130" font-family="Georgia, serif" font-size="24" fill="#6B6380">·</text>
+    <text x="340" y="130" font-family="Noto Sans SC, sans-serif" font-size="24" font-weight="300" fill="#9B95A8" letter-spacing="3">星际引力</text>
+    <g transform="translate(920, 110)">
+      <circle cx="0" cy="0" r="2" fill="#FFF" opacity="0.8"/>
+      <circle cx="15" cy="-10" r="1.5" fill="#FFF" opacity="0.6"/>
+      <circle cx="-10" cy="8" r="1" fill="#FFF" opacity="0.4"/>
+    </g>
+  </g>
+
+  <!-- 居中内容区域 -->
+  <g id="centered-content" transform="translate(540, 0)">
+    <!-- 章节标签 -->
+    <text x="0" y="220" font-family="Georgia, serif" font-size="24" fill="#A78BDA" letter-spacing="6" text-anchor="middle">COSMOS</text>
+
+    <!-- 双星座小图标（带轨道） -->
+    <g transform="translate(0, 300)">
+      <ellipse cx="0" cy="0" rx="80" ry="25" fill="none" stroke="#6B6380" stroke-width="1" opacity="0.5"/>
+      <!-- 射手座 -->
+      <g transform="translate(-50, -20) scale(0.4)">
+        <svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="#A78BDA" stroke-width="3">
+          <line x1="20" y1="80" x2="80" y2="20"/>
+          <line x1="80" y1="20" x2="55" y2="20"/>
+          <line x1="80" y1="20" x2="80" y2="45"/>
+          <line x1="25" y1="45" x2="55" y2="75"/>
+        </svg>
+      </g>
+      <!-- 天蝎座 -->
+      <g transform="translate(18, -20) scale(0.4)">
+        <svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="#7DB8C9" stroke-width="3">
+          <path d="M20 20 L20 80"/>
+          <path d="M20 50 Q35 30 45 50 Q55 70 45 80"/>
+          <path d="M45 50 Q60 30 70 50 L80 40"/>
+          <path d="M75 35 L80 40 L75 45"/>
+        </svg>
+      </g>
+    </g>
+
+    <!-- 分隔线 -->
+    <line x1="-40" y1="370" x2="40" y2="370" stroke="#6B6380" stroke-width="1"/>
+
+    <!-- 主文案区域 -->
+    <g id="summary" transform="translate(0, 480)">
+      <text y="0" font-family="Noto Serif SC, serif" font-size="32" fill="#E8E4F0" letter-spacing="2" text-anchor="middle">适配指数：75%</text>
+      <text y="61" font-family="Noto Serif SC, serif" font-size="32" letter-spacing="2" text-anchor="middle">
+        <tspan fill="#A78BDA">水火交融</tspan>
+      </text>
+      <text y="122" font-family="Noto Serif SC, serif" font-size="32" letter-spacing="2" text-anchor="middle">
+        <tspan fill="#E8E4F0">看似</tspan><tspan fill="#7DB8C9">不合拍</tspan>
+      </text>
+      <text y="183" font-family="Noto Serif SC, serif" font-size="32" fill="#E8E4F0" letter-spacing="2" text-anchor="middle">却有致命吸引力</text>
+    </g>
+
+    <!-- 装饰分隔线（星星） -->
+    <g id="content-divider" transform="translate(0, 780)">
+      <line x1="-70" y1="0" x2="-20" y2="0" stroke="#6B6380" stroke-width="1"/>
+      <circle cx="0" cy="0" r="3" fill="#A78BDA" opacity="0.8"/>
+      <line x1="20" y1="0" x2="70" y2="0" stroke="#6B6380" stroke-width="1"/>
+    </g>
+
+    <!-- 祝福语区域 -->
+    <g id="ending" transform="translate(0, 880)">
+      <text y="0" font-family="Noto Serif SC, serif" font-size="26" font-style="italic" fill="#9B95A8" text-anchor="middle" letter-spacing="3">愿你们在宇宙的某个角落</text>
+      <text y="50" font-family="Noto Serif SC, serif" font-size="26" font-style="italic" fill="#9B95A8" text-anchor="middle" letter-spacing="3">找到属于彼此的轨道</text>
+
+      <!-- END 标记 -->
+      <g transform="translate(0, 120)">
+        <line x1="-80" y1="0" x2="-25" y2="0" stroke="#6B6380" stroke-width="1"/>
+        <text x="0" y="8" font-family="Georgia, serif" font-size="20" fill="url(#textGlow)" text-anchor="middle" letter-spacing="6">ORBIT</text>
+        <line x1="25" y1="0" x2="80" y2="0" stroke="#6B6380" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 页脚 -->
+  <g id="footer">
+    <line x1="100" y1="1350" x2="980" y2="1350" stroke="#6B6380" stroke-width="1"/>
+    <text x="980" y="1390" font-family="Georgia, serif" font-size="28" fill="#9B95A8" text-anchor="end" letter-spacing="4">0 3</text>
+  </g>
+</svg>

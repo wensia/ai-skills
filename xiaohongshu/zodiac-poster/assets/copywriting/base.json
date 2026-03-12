@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "description": "小红书星座文案通用规范",
+
+  "content_rules": {
+    "title": {
+      "min_length": 10,
+      "max_length": 20,
+      "style": "short_restrained",
+      "forbidden_patterns": ["！！", "!!!", "必看", "必收藏"]
+    },
+    "body": {
+      "target_length": {"min": 200, "max": 300},
+      "min_paragraphs": 6,
+      "per_paragraph": {"min": 30, "max": 60},
+      "sentence_style": "short_primary"
+    }
+  },
+
+  "tone": {
+    "style": "cool_but_warm",
+    "description": "Understated, conversational, like talking to yourself",
+    "intimacy": "natural_not_frivolous",
+    "emotion": "restrained_not_melodramatic",
+    "overall": "calm_powerful"
+  },
+
+  "allowed_openings": [
+    {"type": "self_identification", "template": "我们{zodiac}啊，{trait}"},
+    {"type": "direct_statement", "template": "{zodiac}的{topic}，从来不是{misconception}。"},
+    {"type": "soft_reflection", "template": "说实话，{observation}"},
+    {"type": "soft_reflection", "template": "其实{observation}"}
+  ],
+
+  "forbidden_openings": [
+    "姐妹们/宝子们集合啦！",
+    "今天来聊聊...",
+    "必看！必收藏！",
+    "Any excited opening with exclamation marks"
+  ],
+
+  "allowed_closings": [
+    {"type": "open_question", "template": "你遇到的，是哪一种？"},
+    {"type": "soft_summary", "template": "有些人是过客，有些人才是归途。"},
+    {"type": "self_deprecating", "template": "没错，说的就是我自己。"}
+  ],
+
+  "forbidden_closings": [
+    "点赞收藏不迷路！",
+    "关注我看更多！",
+    "评论区告诉我！"
+  ],
+
+  "forbidden_patterns": [
+    "首先...其次...最后...",
+    "总的来说...",
+    "综上所述...",
+    "作为一个{zodiac}...",
+    "宝子们",
+    "姐妹们",
+    "集合",
+    "超爱",
+    "爱死了",
+    "太难过了呜呜",
+    "说走就走超飒",
+    "太真实了！",
+    "笑死我了哈哈哈哈",
+    "真的真的超级无敌"
+  ],
+
+  "recommended_words": {
+    "expressing_like": ["在意", "放在心上"],
+    "expressing_sadness": ["心里不好受", "默默咽了"],
+    "expressing_decisiveness": ["转身就走", "不回头"],
+    "expressing_agreement": ["懂的都懂"]
+  },
+
+  "sentence_patterns": {
+    "use_short_sentences": true,
+    "use_em_dashes": true,
+    "use_ellipsis": true,
+    "examples": {
+      "short": "心里有本账，默默给你打分。",
+      "em_dash": "转身比谁都快——不是不爱，只是尊严比感情更重要。",
+      "ellipsis": "那些回忆啊，就当是做了场醒不来的梦吧。"
+    }
+  },
+
+  "anti_ai_tips": {
+    "add_imperfection": ["emmm怎么说呢", "好像是这样", "反正就是"],
+    "add_personal_perspective": ["我们{zodiac}啊", "说实话", "其实早就"],
+    "use_irregular_punctuation": {
+      "em_dashes_instead_of_commas": true,
+      "occasional_missing_periods": true,
+      "ellipsis_for_pause": true
+    }
+  },
+
+  "highlight_rules": {
+    "cover": {
+      "min": 2,
+      "max": 2,
+      "description": "封面必须有2个重点色词形成呼应"
+    },
+    "content_page": {
+      "min": 2,
+      "max": 3,
+      "description": "内容页必须有2个重点色词呼应对"
+    },
+    "summary_page": {
+      "min": 1,
+      "max": 2,
+      "description": "总结页至少1个重点色词与封面呼应"
+    }
+  },
+
+  "paragraph_structure": {
+    "paragraph_1": {"role": "Topic Introduction", "sentences": "1-2", "description": "get to the point"},
+    "paragraph_2": {"role": "Core Viewpoint", "sentences": "1-2", "description": "main argument"},
+    "paragraph_3": {"role": "Specific Aspect A", "sentences": "1-2", "description": "first dimension"},
+    "paragraph_4": {"role": "Specific Aspect B", "sentences": "1-2", "description": "second dimension"},
+    "paragraph_5": {"role": "Specific Aspect C", "sentences": "1-2", "description": "third dimension (optional)"},
+    "paragraph_6": {"role": "Closing", "sentences": "1-2", "description": "leave lingering impression"}
+  },
+
+  "templates": {
+    "cool_type": {
+      "name": "Cool Type (Recommended)",
+      "pattern": "{星座}的{主题}，从来不是{常见误解}。\n\n{核心表现1}。{核心表现2}，{转折或递进}。\n\n{情感升华或留白}。"
+    },
+    "self_narration": {
+      "name": "Self-narration Type",
+      "pattern": "我们{星座}啊，{核心特点}。\n\n{具体表现1}。{具体表现2}——{解释或反转}。\n\n{收尾感慨}。"
+    },
+    "observation": {
+      "name": "Observation Type",
+      "pattern": "{星座}{行为/特点}，{简短描述}。\n\n{展开1}；{展开2}；{展开3}。\n\n{淡淡收尾}。"
+    }
+  }
+}

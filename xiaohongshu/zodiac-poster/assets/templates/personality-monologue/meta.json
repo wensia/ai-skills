@@ -1,0 +1,40 @@
+{
+  "id": "personality-monologue",
+  "name": "性格独白风",
+  "description": "书信感、PART标签、左边框引用，适合性格深度解读、情感独白、治愈系内容",
+  "style": "SVG",
+
+  "适用场景": ["性格分析", "情感表达", "内心独白", "减压方式", "社交模式"],
+  "不适用": ["星座配对", "互动投票", "测试题", "运势预测"],
+
+  "design": {
+    "accent_color": "#C4653A",
+    "text_color": "#3D3835",
+    "secondary_color": "#6B6461",
+    "divider_color": "#D4CFC8",
+    "background": "linear-gradient(165deg, #FAF6F1, #F5EDE4, #F0E6D9)",
+    "fonts": ["Noto Serif SC", "Noto Sans SC", "Georgia"]
+  },
+
+  "canvas_size": {
+    "width": 1080,
+    "height": 1440
+  },
+
+  "pages": {
+    "cover": "cover.svg",
+    "page": "page.svg",
+    "summary": "summary.svg"
+  },
+
+  "page_count": {
+    "min": 5,
+    "max": 9,
+    "typical": 7
+  },
+
+  "spec_file": "SPEC.md",
+
+  "created_at": "2026-01-05",
+  "updated_at": "2026-01-12"
+}

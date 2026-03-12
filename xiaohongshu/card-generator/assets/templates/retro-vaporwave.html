@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>复古蒸汽波风格模板</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Press+Start+2P&display=swap');
+
+        body {
+            font-family: 'Righteous', cursive;
+            background-color: #10002b;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .monitor-effect {
+            animation: textShadow 1.6s infinite;
+        }
+
+        @keyframes textShadow {
+            0% {
+                text-shadow: 2px 2px #ff00de, -2px -2px #00f5d4;
+            }
+
+            50% {
+                text-shadow: -2px -2px #ff00de, 2px 2px #00f5d4;
+            }
+
+            100% {
+                text-shadow: 2px 2px #ff00de, -2px -2px #00f5d4;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const colors = {
+            bg: '#10002b',
+            purple: '#3c096c',
+            pink: '#ff006e',
+            cyan: '#00f5d4',
+            sunTop: '#ff9e00',
+            sunBot: '#ff006e'
+        };
+
+        const GridFloor = () => {
+            // Generate horizontal lines for perspective grid
+            const lines = [];
+            for (let i = 0; i < 10; i++) {
+                lines.push(<line key={`h${i}`} x1="0" y1={300 + i * i * 1.5} x2="300" y2={300 + i * i * 1.5} stroke={colors.pink} strokeWidth="1" opacity="0.6" />);
+            }
+            // Vertical lines
+            for (let i = 0; i < 11; i++) {
+                // perspective faking
+                lines.push(<line key={`v${i}`} x1={150} y1="200" x2={-150 + i * 60} y2="400" stroke={colors.pink} strokeWidth="1" opacity="0.4" />);
+            }
+            return <g>{lines}</g>;
+        }
+
+        const Sun = () => (
+            <g>
+                <defs>
+                    <linearGradient id="sunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor={colors.sunTop} />
+                        <stop offset="100%" stopColor={colors.sunBot} />
+                    </linearGradient>
+                </defs>
+                <circle cx="150" cy="200" r="80" fill="url(#sunGrad)" />
+                {/* Sun stripes */}
+                {[0, 1, 2, 3, 4, 5].map(i => (
+                    <rect key={i} x="0" y={210 + i * 12} width="300" height={4 + i} fill={colors.bg} />
+                ))}
+            </g>
+        )
+
+        const HomeCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="400" fill={colors.bg} />
+
+                {/* Stars */}
+                {[...Array(20)].map((_, i) => (
+                    <circle key={i} cx={Math.random() * 300} cy={Math.random() * 200} r={Math.random() * 1.5} fill="#fff" opacity="0.8" />
+                ))}
+
+                <Sun />
+                <GridFloor />
+
+                <rect x="0" y="300" width="300" height="100" fill={colors.purple} opacity="0.2" />
+
+                <text x="150" y="100" textAnchor="middle" fill="#fff" fontSize="32" fontWeight="bold" stroke={colors.cyan} strokeWidth="1" style={{ textShadow: "3px 3px 0px #ff006e" }}>
+                    VAPOR
+                </text>
+                <text x="150" y="140" textAnchor="middle" fill="#fff" fontSize="32" fontWeight="bold" stroke={colors.cyan} strokeWidth="1" style={{ textShadow: "3px 3px 0px #ff006e" }}>
+                    WAVE
+                </text>
+
+                <text x="150" y="360" textAnchor="middle" fill={colors.cyan} fontSize="12" fontFamily="Press Start 2P">START GAME</text>
+            </svg>
+        );
+
+        const GlitchCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="400" fill="#000" />
+
+                {/* Glitch rectangles */}
+                <rect x="20" y="50" width="280" height="10" fill={colors.cyan} opacity="0.5" />
+                <rect x="0" y="120" width="250" height="5" fill={colors.pink} opacity="0.5" />
+                <rect x="40" y="300" width="260" height="20" fill={colors.purple} opacity="0.5" />
+
+                <text x="150" y="180" textAnchor="middle" fill="white" fontSize="40" fontWeight="bold">ERROR</text>
+                <text x="154" y="180" textAnchor="middle" fill={colors.cyan} fontSize="40" fontWeight="bold" opacity="0.5">ERROR</text>
+                <text x="146" y="180" textAnchor="middle" fill={colors.pink} fontSize="40" fontWeight="bold" opacity="0.5">ERROR</text>
+
+                <text x="150" y="220" textAnchor="middle" fill="white" fontSize="16" fontFamily="Press Start 2P">404 NOT FOUND</text>
+
+                <rect x="50" y="340" width="200" height="40" stroke="white" strokeWidth="2" fill="none" />
+                <text x="150" y="368" textAnchor="middle" fill="white" fontSize="14">REBOOT SYSTEM</text>
+            </svg>
+        );
+
+        const MusicCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="tapeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#9d4edd" />
+                        <stop offset="100%" stopColor="#3c096c" />
+                    </linearGradient>
+                </defs>
+                <rect width="300" height="400" fill="#240046" />
+
+                {/* Casette Tape */}
+                <g transform="translate(25, 100)">
+                    <rect width="250" height="160" rx="10" fill="#eee" />
+                    <rect x="10" y="10" width="230" height="140" rx="5" fill="black" />
+
+                    <circle cx="65" cy="80" r="30" fill="white" />
+                    <circle cx="185" cy="80" r="30" fill="white" />
+
+                    <path d="M65 80 L185 80" stroke="#333" strokeWidth="2" />
+
+                    <rect x="30" y="110" width="190" height="30" fill="url(#tapeGrad)" />
+                </g>
+
+                <text x="150" y="60" textAnchor="middle" fill={colors.cyan} fontSize="24" fontFamily="Press Start 2P">MIXTAPE</text>
+                <text x="150" y="85" textAnchor="middle" fill={colors.pink} fontSize="12">VOL. 1986</text>
+
+                <text x="150" y="320" textAnchor="middle" fill="white" fontSize="14">A SIDE: SUMMER NIGHTS</text>
+                <text x="150" y="345" textAnchor="middle" fill="white" fontSize="14">B SIDE: NEON DREAMS</text>
+            </svg>
+        );
+
+        const App = () => {
+            const [downloading, setDownloading] = useState(false);
+
+            const handleDownload = async () => {
+                setDownloading(true);
+                const cards = [
+                    { id: 'card-1', name: '01_Home' },
+                    { id: 'card-2', name: '02_Glitch' },
+                    { id: 'card-3', name: '03_Music' },
+                ];
+
+                await window.CardUtils.downloadCards(cards, 'retro-wave-cards.zip', {
+                    onEnd: () => setDownloading(false),
+                    onError: (err) => alert('Error: ' + err.message)
+                });
+            };
+
+            return (
+                <div className="min-h-screen py-10 px-4 pb-24">
+                    <div className="text-center mb-12 monitor-effect">
+                        <h1 className="text-4xl text-[#00f5d4] mb-2" style={{ textShadow: "2px 2px #ff006e" }}>RETRO WAVE</h1>
+                        <p className="text-[#ff006e] font-bold">1980s AESTHETIC</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                        <div id="card-1" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-[0_0_15px_#00f5d4] rounded-lg">
+                            <HomeCard />
+                        </div>
+                        <div id="card-2" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-[0_0_15px_#ff006e] rounded-lg">
+                            <GlitchCard />
+                        </div>
+                        <div id="card-3" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-[0_0_15px_#9d4edd] rounded-lg">
+                            <MusicCard />
+                        </div>
+                    </div>
+
+                    <button
+                        onClick={handleDownload}
+                        disabled={downloading}
+                        className={`fixed bottom-8 right-8 z-50 px-8 py-3 transform skew-x-[-10deg] border-2 border-[#00f5d4] shadow-[4px_4px_0px_#ff006e] transition-all duration-200 hover:-translate-y-1 hover:shadow-[6px_6px_0px_#ff006e] ${downloading
+                                ? 'bg-[#333] cursor-not-allowed'
+                                : 'bg-[#240046] text-[#00f5d4]'
+                            }`}
+                    >
+                        <span className="block transform skew-x-[10deg] font-bold">
+                            {downloading ? 'LOADING...' : 'DOWNLOAD'}
+                        </span>
+                    </button>
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>

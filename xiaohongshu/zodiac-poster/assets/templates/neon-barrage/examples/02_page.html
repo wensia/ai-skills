@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 2160px; height: 2880px; }
+  </style>
+</head>
+<body>
+<svg width="2160" height="2880" viewBox="0 0 1080 1440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; font-weight: 900; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; font-weight: 700; }
+      .body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; font-weight: 400; }
+      .accent { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; font-weight: 500; }
+    </style>
+
+    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="50%" style="stop-color:#06B6D4"/>
+      <stop offset="100%" style="stop-color:#10B981"/>
+    </linearGradient>
+
+    <linearGradient id="neonGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#A855F7"/>
+      <stop offset="100%" style="stop-color:#22D3EE"/>
+    </linearGradient>
+
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C084FC"/>
+      <stop offset="100%" style="stop-color:#67E8F9"/>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 深色背景 -->
+  <rect width="1080" height="1440" fill="#0F0F1A"/>
+
+  <!-- 背景光晕 -->
+  <ellipse cx="200" cy="300" rx="300" ry="300" fill="#8B5CF6" fill-opacity="0.08"/>
+  <ellipse cx="900" cy="1100" rx="400" ry="400" fill="#06B6D4" fill-opacity="0.06"/>
+  <ellipse cx="540" cy="700" rx="500" ry="300" fill="#A855F7" fill-opacity="0.04"/>
+
+  <!-- 顶部装饰线 -->
+  <rect x="0" y="0" width="1080" height="4" fill="url(#neonGradient)"/>
+
+  <!-- 星座标识 -->
+  <rect x="80" y="50" width="160" height="50" rx="25" fill="transparent" stroke="url(#neonGradient2)" stroke-width="2"/>
+  <!-- 星座图标和文字组 - 水平垂直居中 -->
+  <g transform="translate(160, 75)">
+    <!-- 内容整体居中：图标18px + 间距8px + 文字约60px = 86px，偏移-43 -->
+    <g transform="translate(-43, 0)">
+      <!-- SVG 图标 (18x18) 垂直居中 -->
+      <g transform="translate(0, -9)">
+        <line x1="0" y1="0" x2="18" y2="0" stroke="#C084FC" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="0" y1="18" x2="18" y2="18" stroke="#C084FC" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="4" y1="0" x2="4" y2="18" stroke="#C084FC" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="14" y1="0" x2="14" y2="18" stroke="#C084FC" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+      <!-- 文字 -->
+      <text x="26" y="0" class="accent" fill="#C084FC" font-size="20" dominant-baseline="central">双子座</text>
+    </g>
+  </g>
+
+  <!-- 时间标签 -->
+  <text x="920" y="75" class="body" fill="#666680" font-size="16" text-anchor="end" dominant-baseline="middle">深夜电台 · 02:00 AM</text>
+
+  <!-- 装饰点 -->
+  <circle cx="950" cy="150" r="6" fill="#8B5CF6" filter="url(#glow)"/>
+  <circle cx="980" cy="190" r="4" fill="#06B6D4" filter="url(#glow)"/>
+
+  <!-- 主标题 -->
+  <text x="80" y="180" class="title" fill="#FFFFFF" font-size="72" dominant-baseline="hanging">双子座</text>
+  <text x="80" y="270" class="title" fill="url(#textGradient)" font-size="72" dominant-baseline="hanging">脑内弹幕</text>
+  <text x="80" y="360" class="body" fill="#888899" font-size="22" dominant-baseline="hanging">那些凌晨2点还在想的事...</text>
+
+  <!-- 弹幕区域 -->
+  <g id="barrage-items">
+    <!-- 弹幕1 - 紫色 -->
+    <g transform="translate(100, 450)">
+      <rect width="400" height="60" rx="30" fill="#1E1E2E" stroke="#8B5CF6" stroke-width="2"/>
+      <text x="20" y="38" class="body" fill="#666680" font-size="14">23:47</text>
+      <text x="80" y="38" class="body" fill="#E0E0FF" font-size="20">明天还是要努力</text>
+    </g>
+
+    <!-- 弹幕2 - 青色 -->
+    <g transform="translate(550, 530)">
+      <rect width="450" height="60" rx="30" fill="#1E1E2E" stroke="#06B6D4" stroke-width="2"/>
+      <text x="20" y="38" class="body" fill="#666680" font-size="14">00:12</text>
+      <text x="80" y="38" class="body" fill="#E0E0FF" font-size="20">刚才那句话是不是说错了</text>
+    </g>
+
+    <!-- 弹幕3 - 粉色 -->
+    <g transform="translate(150, 620)">
+      <rect width="350" height="60" rx="30" fill="#1E1E2E" stroke="#A855F7" stroke-width="2"/>
+      <text x="20" y="38" class="body" fill="#666680" font-size="14">01:03</text>
+      <text x="80" y="38" class="body" fill="#E0E0FF" font-size="20">其实我根本不在意</text>
+    </g>
+
+    <!-- 弹幕4 - 青绿 -->
+    <g transform="translate(500, 700)">
+      <rect width="500" height="60" rx="30" fill="#1E1E2E" stroke="#22D3EE" stroke-width="2"/>
+      <text x="20" y="38" class="body" fill="#666680" font-size="14">01:45</text>
+      <text x="80" y="38" class="body" fill="#E0E0FF" font-size="20">算了，想开了，睡不着再说</text>
+    </g>
+
+    <!-- 高亮弹幕 - 居中突出 -->
+    <g transform="translate(140, 800)">
+      <rect width="800" height="80" rx="40" fill="#1E1E2E" stroke="url(#neonGradient2)" stroke-width="3"/>
+      <text x="30" y="50" class="body" fill="#888899" font-size="16">02:00</text>
+      <text x="100" y="50" class="subtitle" fill="url(#textGradient)" font-size="26">为什么我有两个完全相反的自己？</text>
+    </g>
+
+    <!-- 弹幕5 - 绿色 -->
+    <g transform="translate(200, 920)">
+      <rect width="420" height="60" rx="30" fill="#1E1E2E" stroke="#10B981" stroke-width="2"/>
+      <text x="20" y="38" class="body" fill="#666680" font-size="14">02:15</text>
+      <text x="80" y="38" class="body" fill="#E0E0FF" font-size="20">其实挺羡慕简单的人</text>
+    </g>
+  </g>
+
+  <!-- 底部总结 -->
+  <line x1="80" y1="1040" x2="1000" y2="1040" stroke="#333344" stroke-width="1"/>
+  <text x="540" y="1100" class="body" fill="#888899" font-size="20" text-anchor="middle" dominant-baseline="middle">双子的脑子：同时在开18个后台程序</text>
+  <text x="540" y="1140" class="body" fill="#666680" font-size="18" text-anchor="middle" dominant-baseline="middle">看起来在聊天，实际在神游第三层宇宙</text>
+
+  <!-- 互动引导 -->
+  <rect x="80" y="1200" width="920" height="100" rx="20" fill="#1E1E2E" stroke="url(#neonGradient2)" stroke-width="1"/>
+  <text x="540" y="1235" class="subtitle" fill="#C084FC" font-size="20" text-anchor="middle" dominant-baseline="middle">凌晨的双子都在想什么？</text>
+  <text x="540" y="1270" class="body" fill="#666680" font-size="18" text-anchor="middle" dominant-baseline="middle">评论区发你的「脑内弹幕」</text>
+
+  <!-- 底部霓虹线 -->
+  <rect x="0" y="1436" width="1080" height="4" fill="url(#neonGradient)"/>
+</svg>
+</body>
+</html>

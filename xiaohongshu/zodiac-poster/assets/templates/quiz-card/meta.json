@@ -1,0 +1,17 @@
+{
+  "id": "quiz-card",
+  "name": "趣味测试风",
+  "description": "明亮背景、多彩装饰、卡片式选项布局，适合互动测试、星座问答、趣味选择题类内容",
+  "accent_color": "#FFE135",
+  "secondary_colors": ["#00BFA5", "#FF7043", "#C6FF00"],
+  "background": "#FFFEF5",
+  "suitable_for": ["互动测试", "星座问答", "趣味选择", "你会怎么做", "AB选项"],
+  "fonts": ["PingFang SC", "Microsoft YaHei", "Arial"],
+  "page_types": ["cover", "page", "summary"],
+  "canvas_size": {
+    "width": 1080,
+    "height": 1440
+  },
+  "created_at": "2026-01-05",
+  "updated_at": "2026-01-05"
+}

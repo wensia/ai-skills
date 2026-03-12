@@ -1,0 +1,60 @@
+<!-- [STYLE: 行动清单风] [TYPE: cover] -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1440" width="1080" height="1440">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f1419"/>
+      <stop offset="50%" style="stop-color:#1a1f2e"/>
+      <stop offset="100%" style="stop-color:#121620"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF44F"/>
+      <stop offset="50%" style="stop-color:#FFEF00"/>
+      <stop offset="100%" style="stop-color:#FFD700"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1080" height="1440" fill="url(#bgGradient)"/>
+
+  <!-- 顶部标签 -->
+  <g transform="translate(80, 100)">
+    <rect width="160" height="44" rx="22" fill="url(#accentGradient)"/>
+    <text x="80" y="30" text-anchor="middle" fill="#0f1419" font-family="PingFang SC, sans-serif" font-size="18" font-weight="600">
+      {{ZODIAC}}
+    </text>
+  </g>
+
+  <!-- 装饰圆点 -->
+  <circle cx="980" cy="120" r="40" fill="url(#accentGradient)" opacity="0.6"/>
+  <circle cx="920" cy="200" r="15" fill="url(#accentGradient)" opacity="0.3"/>
+  <circle cx="100" cy="1300" r="30" fill="url(#accentGradient)" opacity="0.2"/>
+
+  <!-- 封面内容 -->
+  <g id="cover-content" transform="translate(540, 600)">
+    <!-- 副标题 -->
+    <text y="0" text-anchor="middle" fill="#FFEF00" font-family="PingFang SC, sans-serif" font-size="28" font-weight="400" opacity="0.8">
+      {{SUBTITLE}}
+    </text>
+
+    <!-- 主标题 -->
+    <text y="100" text-anchor="middle" fill="#ffffff" font-family="PingFang SC, sans-serif" font-size="64" font-weight="700">
+      {{TITLE_LINE1}}
+    </text>
+    <text y="180" text-anchor="middle" fill="url(#accentGradient)" font-family="PingFang SC, sans-serif" font-size="64" font-weight="700">
+      {{TITLE_LINE2}}
+    </text>
+
+    <!-- 分隔线 -->
+    <rect x="-60" y="230" width="120" height="4" rx="2" fill="url(#accentGradient)"/>
+
+    <!-- 标语 -->
+    <text y="310" text-anchor="middle" fill="#ffffff" font-family="PingFang SC, sans-serif" font-size="26" opacity="0.7">
+      {{TAGLINE}}
+    </text>
+  </g>
+
+  <!-- 页码 -->
+  <text x="80" y="1400" fill="url(#accentGradient)" font-family="Georgia, serif" font-size="18" opacity="0.6">
+    {{PAGE_NUM}}
+  </text>
+</svg>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 2160px; height: 2880px; line-height: 0; overflow: hidden; }
+    svg { display: block; width: 2160px; height: 2880px; }
+  </style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1440" width="2160" height="2880">
+  <defs>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1080" height="1440" fill="#FFF8E7"/>
+
+  <!-- 背景装饰圆 -->
+  <circle cx="980" cy="100" r="200" fill="#A8E6CF" opacity="0.35" filter="url(#blur1)"/>
+  <circle cx="80" cy="1150" r="180" fill="#FFF3C4" opacity="0.45" filter="url(#blur1)"/>
+  <circle cx="920" cy="1320" r="120" fill="#88D8B0" opacity="0.25" filter="url(#blur1)"/>
+
+  <!-- 点阵装饰 - 右上角 -->
+  <g fill="#88D8B0" opacity="0.3">
+    <circle cx="920" cy="420" r="5"/><circle cx="948" cy="420" r="5"/><circle cx="976" cy="420" r="5"/><circle cx="1004" cy="420" r="5"/>
+    <circle cx="920" cy="448" r="5"/><circle cx="948" cy="448" r="5"/><circle cx="976" cy="448" r="5"/><circle cx="1004" cy="448" r="5"/>
+    <circle cx="920" cy="476" r="5"/><circle cx="948" cy="476" r="5"/><circle cx="976" cy="476" r="5"/><circle cx="1004" cy="476" r="5"/>
+  </g>
+
+  <!-- ==================== 右上角品牌标识区 ==================== -->
+  <g transform="translate(850, 60)">
+    <!-- 大号星座图标（装饰性） -->
+    <g transform="translate(60, 50)">
+      <line x1="0" y1="0" x2="60" y2="0" stroke="#88D8B0" stroke-width="6" stroke-linecap="round"/>
+      <line x1="0" y1="60" x2="60" y2="60" stroke="#88D8B0" stroke-width="6" stroke-linecap="round"/>
+      <line x1="15" y1="0" x2="15" y2="60" stroke="#88D8B0" stroke-width="6" stroke-linecap="round"/>
+      <line x1="45" y1="0" x2="45" y2="60" stroke="#88D8B0" stroke-width="6" stroke-linecap="round"/>
+    </g>
+
+    <!-- 竖排文字 -->
+    <text x="30" y="30" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="500" fill="#2D3436" writing-mode="vertical-rl">双</text>
+    <text x="30" y="58" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="500" fill="#2D3436" writing-mode="vertical-rl">子</text>
+    <text x="30" y="86" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="500" fill="#2D3436" writing-mode="vertical-rl">座</text>
+    <text x="30" y="114" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="500" fill="#2D3436" writing-mode="vertical-rl">洞</text>
+    <text x="30" y="142" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="500" fill="#2D3436" writing-mode="vertical-rl">察</text>
+
+    <!-- 英文标识 -->
+    <text x="160" y="140" font-family="Georgia, serif" font-size="14" fill="#A8A8A8" text-anchor="end" letter-spacing="2">GEMINI</text>
+    <text x="160" y="158" font-family="Georgia, serif" font-size="14" fill="#A8A8A8" text-anchor="end" letter-spacing="2">INSIGHT</text>
+  </g>
+
+  <!-- ==================== 主标题区 ==================== -->
+  <text x="70" y="165" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="64" font-weight="800" fill="#2D3436">双子座为什么</text>
+
+  <!-- 第二行：总是 + 高亮想太多 + ？ -->
+  <text x="70" y="250" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="64" font-weight="800" fill="#2D3436">总是</text>
+  <rect x="200" y="208" width="224" height="52" fill="#FFE566"/>
+  <text x="208" y="250" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="64" font-weight="800" fill="#2D3436">想太多</text>
+  <text x="432" y="250" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="64" font-weight="800" fill="#2D3436">？</text>
+
+  <!-- 副标题 -->
+  <text x="70" y="310" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" fill="#636E72">其实不是想太多，是脑子太快了</text>
+
+  <!-- ==================== 双卡片区 ==================== -->
+  <!-- 卡片1 -->
+  <rect x="70" y="400" width="460" height="260" rx="24" fill="#FFFFFF" filter="url(#cardShadow)"/>
+  <rect x="100" y="432" width="48" height="48" rx="12" fill="#FFE566"/>
+  <text x="124" y="456" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#2D3436" text-anchor="middle" dominant-baseline="central">1</text>
+  <text x="164" y="456" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#2D3436" dominant-baseline="central">信息过载体质</text>
+  <text x="100" y="530" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" fill="#636E72">同时处理N个想法是日常操作，</text>
+  <text x="100" y="565" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" fill="#636E72">安静才是最大的噪音</text>
+  <line x1="100" y1="610" x2="490" y2="610" stroke="#F0EBE3" stroke-width="2"/>
+  <text x="100" y="640" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#A8A8A8" letter-spacing="1">INFORMATION OVERLOAD</text>
+
+  <!-- 卡片2 -->
+  <rect x="550" y="400" width="460" height="260" rx="24" fill="#FFFFFF" filter="url(#cardShadow)"/>
+  <rect x="580" y="432" width="48" height="48" rx="12" fill="#FFE566"/>
+  <text x="604" y="456" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#2D3436" text-anchor="middle" dominant-baseline="central">2</text>
+  <text x="644" y="456" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#2D3436" dominant-baseline="central">预判型选手</text>
+  <text x="580" y="530" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" fill="#636E72">你还没开口，我已经想好</text>
+  <text x="580" y="565" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" fill="#636E72">三种回答和后续剧情</text>
+  <line x1="580" y1="610" x2="970" y2="610" stroke="#F0EBE3" stroke-width="2"/>
+  <text x="580" y="640" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#A8A8A8" letter-spacing="1">PREDICTIVE MASTER</text>
+
+  <!-- ==================== 全宽卡片（包含标签） ==================== -->
+  <rect x="70" y="690" width="940" height="320" rx="24" fill="#FFFFFF" filter="url(#cardShadow)"/>
+
+  <!-- 灯泡 + 主文字 -->
+  <g transform="translate(100, 755)">
+    <text x="0" y="0" font-family="Apple Color Emoji, Segoe UI Emoji" font-size="36" dominant-baseline="central">💡</text>
+    <text x="50" y="0" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="600" fill="#2D3436" dominant-baseline="central">双子的脑内弹幕永远比对话快一步</text>
+  </g>
+
+  <!-- 补充说明文字 -->
+  <text x="150" y="820" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="20" fill="#888888" font-style="italic">"别人还在理解问题，你已经在构思第三套方案了"</text>
+
+  <!-- 装饰分隔线 -->
+  <line x1="100" y1="865" x2="970" y2="865" stroke="#F0EBE3" stroke-width="2"/>
+
+  <!-- 思维图标装饰 -->
+  <g transform="translate(100, 900)">
+    <text x="0" y="0" font-family="Apple Color Emoji, Segoe UI Emoji" font-size="22" dominant-baseline="central">🧠</text>
+    <text x="35" y="0" font-family="Apple Color Emoji, Segoe UI Emoji" font-size="22" dominant-baseline="central">💭</text>
+    <text x="70" y="0" font-family="Apple Color Emoji, Segoe UI Emoji" font-size="22" dominant-baseline="central">⚡</text>
+    <text x="105" y="0" font-family="Apple Color Emoji, Segoe UI Emoji" font-size="22" dominant-baseline="central">🌀</text>
+  </g>
+
+  <!-- #标签行（在卡片内部） -->
+  <g transform="translate(100, 945)">
+    <rect x="0" y="0" width="120" height="40" rx="20" fill="#FFF3C4"/>
+    <text x="60" y="20" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#2D3436" text-anchor="middle" dominant-baseline="central">#思维跳跃</text>
+
+    <rect x="135" y="0" width="120" height="40" rx="20" fill="#D4F5E4"/>
+    <text x="195" y="20" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#2D3436" text-anchor="middle" dominant-baseline="central">#高速运转</text>
+
+    <rect x="270" y="0" width="140" height="40" rx="20" fill="#FFF3C4"/>
+    <text x="340" y="20" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#2D3436" text-anchor="middle" dominant-baseline="central">#多线程人格</text>
+
+    <rect x="425" y="0" width="120" height="40" rx="20" fill="#D4F5E4"/>
+    <text x="485" y="20" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#2D3436" text-anchor="middle" dominant-baseline="central">#聪明但累</text>
+  </g>
+
+  <!-- ==================== 互动引导区 ==================== -->
+  <rect x="70" y="1040" width="940" height="130" rx="20" fill="#F5F0E8"/>
+
+  <!-- 使用纯 SVG text 元素确保渲染兼容性 -->
+  <text x="540" y="1090" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" font-weight="600" fill="#2D3436" text-anchor="middle">你也是这样的双子座吗？</text>
+  <text x="540" y="1130" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="20" fill="#636E72" text-anchor="middle">在评论区分享你的「想太多」瞬间 💬</text>
+
+  <!-- ==================== 双子特质横排 ==================== -->
+  <g transform="translate(70, 1200)">
+    <!-- 特质1 -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="300" height="70" rx="16" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="25" y="35" font-family="Apple Color Emoji, Segoe UI Emoji" font-size="28" dominant-baseline="central">🎯</text>
+      <text x="65" y="28" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="600" fill="#2D3436" dominant-baseline="central">思维活跃</text>
+      <text x="65" y="52" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#888888" dominant-baseline="central">灵感随时迸发</text>
+    </g>
+
+    <!-- 特质2 -->
+    <g transform="translate(320, 0)">
+      <rect x="0" y="0" width="300" height="70" rx="16" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="25" y="35" font-family="Apple Color Emoji, Segoe UI Emoji" font-size="28" dominant-baseline="central">🦋</text>
+      <text x="65" y="28" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="600" fill="#2D3436" dominant-baseline="central">适应力强</text>
+      <text x="65" y="52" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#888888" dominant-baseline="central">环境切换自如</text>
+    </g>
+
+    <!-- 特质3 -->
+    <g transform="translate(640, 0)">
+      <rect x="0" y="0" width="300" height="70" rx="16" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="25" y="35" font-family="Apple Color Emoji, Segoe UI Emoji" font-size="28" dominant-baseline="central">✨</text>
+      <text x="65" y="28" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="600" fill="#2D3436" dominant-baseline="central">好奇心旺</text>
+      <text x="65" y="52" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#888888" dominant-baseline="central">万物皆可探索</text>
+    </g>
+  </g>
+
+  <!-- ==================== 底部信息区 ==================== -->
+  <line x1="70" y1="1320" x2="1010" y2="1320" stroke="#E8E3DB" stroke-width="1"/>
+
+  <!-- 日期和星座信息 -->
+  <text x="70" y="1365" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" fill="#636E72">5.21 - 6.21</text>
+  <text x="200" y="1365" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" fill="#88D8B0">✦</text>
+  <text x="225" y="1365" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" fill="#636E72">风象星座</text>
+
+  <!-- 左滑引导（最底部右侧） -->
+  <text x="1010" y="1365" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="500" fill="#2D3436" text-anchor="end">左滑查看完整解读 →</text>
+
+  <!-- 账号信息 -->
+  <text x="540" y="1415" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="20" fill="#A8A8A8" text-anchor="middle">@你的小红书账号</text>
+</svg>
+</body>
+</html>

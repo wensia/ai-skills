@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 2160px; height: 2880px; }
+  </style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1440" width="2160" height="2880">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f1419"/>
+      <stop offset="50%" style="stop-color:#1a1f2e"/>
+      <stop offset="100%" style="stop-color:#121620"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF44F"/>
+      <stop offset="50%" style="stop-color:#FFEF00"/>
+      <stop offset="100%" style="stop-color:#FFD700"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1080" height="1440" fill="url(#bgGradient)"/>
+
+  <!-- 标签区 -->
+  <g transform="translate(80, 100)">
+    <rect width="200" height="48" rx="24" fill="url(#accentGradient)"/>
+    <!-- 星座 SVG 图标 -->
+    <svg x="15" y="8" width="32" height="32" viewBox="0 0 100 100">
+      <line x1="25" y1="20" x2="75" y2="20" stroke="#0f1419" stroke-width="8" stroke-linecap="round"/>
+      <line x1="25" y1="80" x2="75" y2="80" stroke="#0f1419" stroke-width="8" stroke-linecap="round"/>
+      <line x1="35" y1="20" x2="35" y2="80" stroke="#0f1419" stroke-width="8" stroke-linecap="round"/>
+      <line x1="65" y1="20" x2="65" y2="80" stroke="#0f1419" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+    <text x="120" y="32" text-anchor="middle" fill="#0f1419" font-family="PingFang SC, sans-serif" font-size="20" font-weight="600">双子座</text>
+  </g>
+
+  <!-- 装饰圆点 -->
+  <circle cx="980" cy="120" r="25" fill="url(#accentGradient)" opacity="0.6"/>
+  <circle cx="950" cy="180" r="10" fill="url(#accentGradient)" opacity="0.3"/>
+
+  <!-- 页面标题 -->
+  <text x="80" y="240" fill="#ffffff" font-family="PingFang SC, sans-serif" font-size="48" font-weight="700">社交场合必备清单</text>
+
+  <!-- 清单项目区 -->
+  <g id="checklist" transform="translate(80, 320)">
+    <!-- 清单项 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="920" height="100" rx="12" fill="#ffffff" opacity="0.05"/>
+      <rect x="20" y="30" width="40" height="40" rx="8" fill="url(#accentGradient)"/>
+      <text x="34" y="58" fill="#0f1419" font-family="Arial" font-size="24" font-weight="700">✓</text>
+      <text x="80" y="60" fill="#ffffff" font-family="PingFang SC, sans-serif" font-size="26" font-weight="500">准备3个有趣的话题备用</text>
+    </g>
+
+    <!-- 清单项 2 -->
+    <g transform="translate(0, 120)">
+      <rect width="920" height="100" rx="12" fill="#ffffff" opacity="0.05"/>
+      <rect x="20" y="30" width="40" height="40" rx="8" fill="url(#accentGradient)"/>
+      <text x="34" y="58" fill="#0f1419" font-family="Arial" font-size="24" font-weight="700">✓</text>
+      <text x="80" y="60" fill="#ffffff" font-family="PingFang SC, sans-serif" font-size="26" font-weight="500">记住对方的名字和关键信息</text>
+    </g>
+
+    <!-- 清单项 3 -->
+    <g transform="translate(0, 240)">
+      <rect width="920" height="100" rx="12" fill="#ffffff" opacity="0.05"/>
+      <rect x="20" y="30" width="40" height="40" rx="8" fill="url(#accentGradient)"/>
+      <text x="34" y="58" fill="#0f1419" font-family="Arial" font-size="24" font-weight="700">✓</text>
+      <text x="80" y="60" fill="#ffffff" font-family="PingFang SC, sans-serif" font-size="26" font-weight="500">适时展示幽默感，但不抢风头</text>
+    </g>
+
+    <!-- 清单项 4 -->
+    <g transform="translate(0, 360)">
+      <rect width="920" height="100" rx="12" fill="#ffffff" opacity="0.05"/>
+      <rect x="20" y="30" width="40" height="40" rx="8" fill="url(#accentGradient)"/>
+      <text x="34" y="58" fill="#0f1419" font-family="Arial" font-size="24" font-weight="700">✓</text>
+      <text x="80" y="60" fill="#ffffff" font-family="PingFang SC, sans-serif" font-size="26" font-weight="500">保持好奇心，主动询问对方</text>
+    </g>
+
+    <!-- 清单项 5 -->
+    <g transform="translate(0, 480)">
+      <rect width="920" height="100" rx="12" fill="#ffffff" opacity="0.05"/>
+      <rect x="20" y="30" width="40" height="40" rx="8" fill="url(#accentGradient)"/>
+      <text x="34" y="58" fill="#0f1419" font-family="Arial" font-size="24" font-weight="700">✓</text>
+      <text x="80" y="60" fill="#ffffff" font-family="PingFang SC, sans-serif" font-size="26" font-weight="500">学会适时抽离，给自己充电</text>
+    </g>
+  </g>
+
+  <!-- 底部互动区 -->
+  <g id="interaction" transform="translate(80, 1000)">
+    <line x1="0" y1="0" x2="920" y2="0" stroke="#FFEF00" stroke-width="1" opacity="0.3"/>
+
+    <text x="0" y="60" fill="#FFEF00" font-family="PingFang SC, sans-serif" font-size="20" font-weight="500">💬 互动时间</text>
+    <text x="0" y="110" fill="#ffffff" font-family="PingFang SC, sans-serif" font-size="32" font-weight="600">你最常用的社交技巧是？</text>
+
+    <!-- 投票按钮 -->
+    <g id="vote-buttons" transform="translate(0, 160)">
+      <rect x="0" y="0" width="200" height="60" rx="30" fill="transparent" stroke="url(#accentGradient)" stroke-width="2"/>
+      <text x="100" y="38" text-anchor="middle" fill="#FFEF00" font-family="PingFang SC, sans-serif" font-size="20">A. 幽默化解</text>
+
+      <rect x="240" y="0" width="200" height="60" rx="30" fill="transparent" stroke="url(#accentGradient)" stroke-width="2"/>
+      <text x="340" y="38" text-anchor="middle" fill="#FFEF00" font-family="PingFang SC, sans-serif" font-size="20">B. 认真倾听</text>
+
+      <rect x="480" y="0" width="200" height="60" rx="30" fill="transparent" stroke="url(#accentGradient)" stroke-width="2"/>
+      <text x="580" y="38" text-anchor="middle" fill="#FFEF00" font-family="PingFang SC, sans-serif" font-size="20">C. 话题转换</text>
+    </g>
+  </g>
+
+  <!-- 页码 -->
+  <text x="80" y="1400" fill="url(#accentGradient)" font-family="Georgia, serif" font-size="18" opacity="0.6">02 / 03</text>
+</svg>
+</body>
+</html>

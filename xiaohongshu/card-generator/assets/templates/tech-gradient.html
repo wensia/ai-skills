@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>未来科技风格模板</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #050505;
+            min-height: 100vh;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px rgba(100, 210, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const colors = {
+            bg: '#050505',
+            cardBg: '#0A0A0A',
+            border: '#1F1F1F',
+            primary: '#E1E1E1',
+            secondary: '#888888',
+            accent: '#3B82F6', // Blue tint
+            cyan: '#22d3ee'
+        };
+
+        // 精细网格背景组件
+        const GridBackground = () => (
+            <defs>
+                <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1A1A1A" strokeWidth="0.5"/>
+                </pattern>
+                <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <rect width="100" height="100" fill="url(#smallGrid)"/>
+                    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#222" strokeWidth="1"/>
+                </pattern>
+                <linearGradient id="fadeBottom" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stopColor="white" stopOpacity="1"/>
+                    <stop offset="80%" stopColor="white" stopOpacity="0.8"/>
+                    <stop offset="100%" stopColor="white" stopOpacity="0"/>
+                </linearGradient>
+                <mask id="fadeMask">
+                    <rect width="300" height="400" fill="url(#fadeBottom)"/>
+                </mask>
+            </defs>
+        );
+
+        // 卡片1：封面 - 极简排版 + 辉光
+        const CoverCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="400" fill={colors.bg} />
+                <GridBackground />
+                <rect width="300" height="400" fill="url(#grid)" mask="url(#fadeMask)" opacity="0.6"/>
+                
+                {/* 顶部发光条 */}
+                <rect x="0" y="0" width="300" height="1" fill="#3B82F6" opacity="0.5">
+                    <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite"/>
+                </rect>
+
+                {/* 中心球体效果 */}
+                <circle cx="150" cy="140" r="60" fill="url(#sphereGrad)" filter="blur(30px)" opacity="0.4" />
+                <defs>
+                    <radialGradient id="sphereGrad" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="#3B82F6" />
+                        <stop offset="100%" stopColor="transparent" />
+                    </radialGradient>
+                </defs>
+
+                {/* 装饰线 */}
+                <line x1="150" y1="100" x2="150" y2="180" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                <line x1="110" y1="140" x2="190" y2="140" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                
+                <text x="150" y="240" textAnchor="middle" fill="white" fontSize="32" fontWeight="500" letterSpacing="-1">
+                    NEXT GEN
+                </text>
+                <text x="150" y="270" textAnchor="middle" fill="#888" fontSize="12" letterSpacing="4">
+                    TECHNOLOGY
+                </text>
+
+                {/* 底部技术参数装饰 */}
+                <g transform="translate(20, 360)">
+                    <rect x="0" y="0" width="40" height="2" fill="#333" />
+                    <rect x="45" y="0" width="10" height="2" fill="#3B82F6" />
+                    <text x="260" y="5" textAnchor="end" fill="#444" fontSize="8" fontFamily="monospace">SYS.INIT.01</text>
+                </g>
+            </svg>
+        );
+
+        // 卡片2：芯片/核心 - 结构化展示
+        const ChipCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="400" fill={colors.bg} />
+                <rect width="300" height="400" fill="url(#grid)" opacity="0.3"/>
+                
+                {/* 芯片外框 */}
+                <rect x="50" y="100" width="200" height="200" rx="4" fill="#0A0A0A" stroke="#333" strokeWidth="1" />
+                
+                {/* 芯片核心 */}
+                <rect x="100" y="150" width="100" height="100" fill="#111" stroke="#3B82F6" strokeWidth="1" />
+                <rect x="100" y="150" width="100" height="100" fill="#3B82F6" opacity="0.1" />
+                
+                {/* 引脚线路 */}
+                {[...Array(8)].map((_, i) => (
+                    <g key={i}>
+                        {/* 上 */}
+                        <line x1={80 + i*20} y1="100" x2={80 + i*20} y2="120" stroke="#444" strokeWidth="1" />
+                        {/* 下 */}
+                        <line x1={80 + i*20} y1="280" x2={80 + i*20} y2="300" stroke="#444" strokeWidth="1" />
+                    </g>
+                ))}
+                
+                <text x="150" y="205" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold">M2</text>
+                <text x="150" y="225" textAnchor="middle" fill="#3B82F6" fontSize="10" letterSpacing="2">PROCESSOR</text>
+
+                <text x="150" y="60" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">Core Architecture</text>
+                <text x="150" y="350" textAnchor="middle" fill="#666" fontSize="12">High Performance Unit</text>
+            </svg>
+        );
+
+        // 卡片3：数据流 - 极简图表
+        const DataCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="400" fill={colors.bg} />
+                
+                <text x="30" y="50" fill="white" fontSize="14" fontWeight="bold">ANALYTICS</text>
+                
+                {/* 环形图 */}
+                <g transform="translate(150, 150)">
+                    <circle cx="0" cy="0" r="60" fill="none" stroke="#222" strokeWidth="12" />
+                    {/* 75% 进度 */}
+                    <path d="M0,-60 A60,60 0 1 1 -60,0" fill="none" stroke="#3B82F6" strokeWidth="12" strokeLinecap="round" />
+                    <text x="0" y="10" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold">75%</text>
+                </g>
+                
+                {/* 数据项 */}
+                <g transform="translate(40, 260)">
+                    {[
+                        { label: 'Speed', val: '12ms', bar: 90 },
+                        { label: 'Load', val: '45%', bar: 45 },
+                        { label: 'Secure', val: 'High', bar: 100 }
+                    ].map((item, i) => (
+                        <g key={i} transform={`translate(0, ${i * 40})`}>
+                            <text x="0" y="0" fill="#888" fontSize="12">{item.label}</text>
+                            <text x="220" y="0" textAnchor="end" fill="white" fontSize="12" fontFamily="monospace">{item.val}</text>
+                            {/* 进度条背景 */}
+                            <rect x="0" y="10" width="220" height="4" fill="#222" rx="2" />
+                            {/* 进度条前景 */}
+                            <rect x="0" y="10" width={item.bar * 2.2} height="4" fill="#3B82F6" rx="2">
+                                <animate attributeName="width" from="0" to={item.bar * 2.2} dur="1s" fill="freeze" />
+                            </rect>
+                        </g>
+                    ))}
+                </g>
+            </svg>
+        );
+
+        // 卡片4：代码/终端 - 玻璃质感
+        const CodeCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stopColor="#222" />
+                        <stop offset="100%" stopColor="#111" />
+                    </linearGradient>
+                </defs>
+                <rect width="300" height="400" fill={colors.bg} />
+                
+                {/* 装饰背景字 */}
+                <text x="150" y="200" textAnchor="middle" fill="#111" fontSize="100" fontWeight="bold">DEV</text>
+
+                {/* 玻璃卡片 */}
+                <g transform="translate(25, 80)">
+                    <rect width="250" height="240" rx="12" fill="url(#glassGrad)" stroke="#333" strokeWidth="1" />
+                    
+                    {/* 窗口按钮 */}
+                    <circle cx="20" cy="20" r="4" fill="#333" />
+                    <circle cx="35" cy="20" r="4" fill="#333" />
+                    <circle cx="50" cy="20" r="4" fill="#333" />
+                    
+                    {/* 代码内容 */}
+                    <g transform="translate(20, 60)" fontFamily="monospace" fontSize="11">
+                        <text y="0" fill="#c678dd">const</text> 
+                        <text y="0" x="42" fill="#e5c07b">Future</text> 
+                        <text y="0" x="90" fill="white">= {`{`}</text>
+                        
+                        <text y="20" x="15" fill="#d19a66">vision:</text> 
+                        <text y="20" x="65" fill="#98c379">"Limitless"</text>
+                        <text y="20" x="135" fill="white">,</text>
+                        
+                        <text y="40" x="15" fill="#d19a66">tech:</text> 
+                        <text y="40" x="55" fill="#56b6c2">["AI", "Web3"]</text>
+                        
+                        <text y="60" x="0" fill="white">{`}`}</text>
+                        
+                        <text y="90" x="0" fill="#61afef">build</text>
+                        <text y="90" x="35" fill="white">()</text>
+                        <text y="90" x="50" fill="white">.then(</text>
+                        <text y="90" x="90" fill="#e06c75">launch</text>
+                        <text y="90" x="130" fill="white">)</text>
+                    </g>
+                    
+                    {/* 运行按钮 */}
+                    <rect x="180" y="200" width="50" height="24" rx="4" fill="#3B82F6" />
+                    <text x="205" y="216" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">RUN</text>
+                </g>
+            </svg>
+        );
+
+        const App = () => {
+             const [downloading, setDownloading] = useState(false);
+
+            const handleDownload = async () => {
+                setDownloading(true);
+                const cards = [
+                    { id: 'card-1', name: '01_Cover' },
+                    { id: 'card-2', name: '02_Chip' },
+                    { id: 'card-3', name: '03_Data' },
+                    { id: 'card-4', name: '04_Code' },
+                ];
+
+                await window.CardUtils.downloadCards(cards, 'future-tech-cards.zip', {
+                    onEnd: () => setDownloading(false),
+                    onError: (err) => alert('Error: ' + err.message)
+                });
+            };
+
+            return (
+                <div className="min-h-screen py-10 px-4 pb-24 bg-black">
+                     <div className="text-center mb-12">
+                        <h1 className="text-4xl font-bold mb-2 text-white">Future Tech</h1>
+                        <p className="text-gray-500 font-mono text-sm">DEEP SPACE AESTHETIC</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                        <div id="card-1" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-2xl shadow-blue-900/20 border border-gray-800 rounded-lg">
+                            <CoverCard />
+                        </div>
+                        <div id="card-2" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-2xl shadow-blue-900/20 border border-gray-800 rounded-lg">
+                            <ChipCard />
+                        </div>
+                        <div id="card-3" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-2xl shadow-blue-900/20 border border-gray-800 rounded-lg">
+                            <DataCard />
+                        </div>
+                        <div id="card-4" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-2xl shadow-blue-900/20 border border-gray-800 rounded-lg">
+                            <CodeCard />
+                        </div>
+                    </div>
+
+                    <button 
+                        onClick={handleDownload}
+                        disabled={downloading}
+                        className={`fixed bottom-8 right-8 z-50 px-8 py-3 rounded-sm border border-blue-500 transition-all duration-300 font-mono text-sm tracking-wider ${
+                            downloading 
+                            ? 'bg-gray-900 text-gray-500 cursor-not-allowed' 
+                            : 'bg-black text-blue-500 hover:bg-blue-500 hover:text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]'
+                        }`}
+                    >
+                         {downloading ? '[ PROCESSING ]' : '[ EXPORT SYSTEM ]'}
+                    </button>
+                    
+                    <div className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-black via-blue-600 to-black opacity-50"></div>
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>立体投影风格模板</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #1a1a1a;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        // Shadow Card 组件 - 复刻用户提供的图片风格
+        const ShadowCard = ({ date, title, content, author, qrcodeText }) => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="400" fill="#ffffff" />
+
+                {/* 外部装饰边框/安全区指示 (可选，保持留白) */}
+                <rect x="0" y="0" width="300" height="400" fill="#f8fafc" />
+
+                {/* 阴影层 (偏移) */}
+                <rect x="35" y="45" width="240" height="320" rx="16" fill="#333333" />
+
+                {/* 你的卡片主体 (白色底，黑色边框) */}
+                <rect x="30" y="40" width="240" height="320" rx="16" fill="#ffffff" stroke="#333333" strokeWidth="2" />
+
+                {/* Header: 日期与圆点 */}
+                <text x="45" y="70" fill="#333" fontSize="11" fontWeight="bold">{date}</text>
+
+                <g transform="translate(225, 66)">
+                    <circle cx="0" cy="0" r="3" fill="none" stroke="#333" strokeWidth="1.5" />
+                    <circle cx="10" cy="0" r="3" fill="#333" />
+                    <circle cx="20" cy="0" r="3" fill="none" stroke="#333" strokeWidth="1.5" />
+                </g>
+
+                {/* 分隔线 */}
+                <line x1="45" y1="85" x2="255" y2="85" stroke="#333" strokeWidth="1.5" />
+
+                {/* 主内容区域 */}
+                <text x="45" y="115" fill="#333" fontSize="18" fontWeight="bold">👋 hi 你好</text>
+
+                {/* 多行文本模拟 */}
+                <g transform="translate(45, 145)">
+                    <foreignObject width="210" height="130">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style={{
+                            color: '#444',
+                            fontSize: '11px',
+                            lineHeight: '1.8',
+                            textAlign: 'justify',
+                            fontFamily: 'Noto Sans SC',
+                            fontWeight: '500'
+                        }}>
+                            {content}
+                        </div>
+                    </foreignObject>
+                </g>
+
+                {/* 底部署名区分隔线 */}
+                <line x1="45" y1="250" x2="255" y2="250" stroke="#eee" strokeWidth="1" />
+
+                {/* 署名区 */}
+                <text x="45" y="270" fill="#333" fontSize="11" fontWeight="bold">{author}</text>
+                <text x="255" y="270" textAnchor="end" fill="#333" fontSize="11" fontWeight="bold">76</text>
+
+                {/* 底部二维码卡片 - 无二维码/装饰版 */}
+                <g transform="translate(45, 285)">
+                    {/* 内嵌卡片阴影 */}
+                    <rect x="2" y="2" width="210" height="60" rx="8" fill="#333" opacity="0.8" />
+                    {/* 内嵌卡片本体 */}
+                    <rect x="0" y="0" width="210" height="60" rx="8" fill="#ffffff" stroke="#333" strokeWidth="1.5" />
+
+                    {/* 居中文字布局 */}
+                    <text x="105" y="35" textAnchor="middle" fill="#333" fontSize="14" fontWeight="bold" letterSpacing="1">{qrcodeText}</text>
+                </g>
+
+                {/* 最底部Brand */}
+
+            </svg>
+        );
+
+        const App = () => {
+            const [downloading, setDownloading] = useState(false);
+
+            const handleDownload = async () => {
+                setDownloading(true);
+                const cards = [
+                    { id: 'card-1', name: '01_Daily' },
+                    { id: 'card-2', name: '02_Quote' },
+                    { id: 'card-3', name: '03_Code' },
+                    { id: 'card-4', name: '04_Brand' },
+                ];
+
+                await window.CardUtils.downloadCards(cards, 'shadow-cards.zip', {
+                    onEnd: () => setDownloading(false),
+                    onError: (err) => alert('Error: ' + err.message)
+                });
+            };
+
+            const sampleText = "产品经理必须要有洞察人性和商业的能力，这样才能更好地发现市场痛点，了解用户需求，并用商业来完善产品想法，而不是仅仅作为一名员工去实现公司指定的产品路线。";
+            const quoteText = "设计不是为了好看，而是为了解决问题。好的设计应该是隐形的，让用户在不知不觉中完成任务。";
+
+            return (
+                <div className="min-h-screen py-10 px-4 pb-24 bg-[#e5e5e5]">
+                    <div className="text-center mb-12">
+                        <h1 className="text-4xl font-black mb-2 text-[#333]">Shadow Pop</h1>
+                        <p className="text-gray-500 font-medium">立体投影风格</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                        <div id="card-1" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-xl">
+                            <ShadowCard
+                                date="2025年6月8日"
+                                content={sampleText}
+                                author="Author"
+                                qrcodeText="奔赴星辰大海"
+                            />
+                        </div>
+                        <div id="card-2" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-xl">
+                            <ShadowCard
+                                date="2025年6月9日"
+                                content={quoteText}
+                                author="Designer"
+                                qrcodeText="Daily Wisdom"
+                            />
+                        </div>
+                        <div id="card-3" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-xl">
+                            <ShadowCard
+                                date="2025年6月10日"
+                                content="React Hooks 彻底改变了我们编写组件的方式。useEffect 让你在函数组件中执行副作用，而 useState 让状态管理变得异常简单。"
+                                author="TechLead"
+                                qrcodeText="查看代码片段"
+                            />
+                        </div>
+                        <div id="card-4" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-xl">
+                            <ShadowCard
+                                date="2025年6月11日"
+                                content="保持好奇心，这是持续成长的动力。不要停止提问，不要停止探索。世界比你想象的要大得多。"
+                                author="Explorer"
+                                qrcodeText="开启人生旅程"
+                            />
+                        </div>
+                    </div>
+
+                    <button
+                        onClick={handleDownload}
+                        disabled={downloading}
+                        className={`fixed bottom-8 right-8 z-50 px-8 py-3 rounded-lg shadow-[4px_4px_0_#000] border-2 border-black transition-all duration-200 transform active:translate-y-1 active:shadow-none ${downloading
+                            ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                            : 'bg-white text-black hover:bg-yellow-100'
+                            } font-bold`}
+                    >
+                        {downloading ? 'Packing...' : 'Download ZIP'}
+                    </button>
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>

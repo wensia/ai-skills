@@ -1,0 +1,8 @@
+/* 资源圆体 - ZiYuan YuanTi */
+@font-face {
+  font-family: 'ZiYuan YuanTi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(./zyYuanTi.woff2) format('woff2');
+}

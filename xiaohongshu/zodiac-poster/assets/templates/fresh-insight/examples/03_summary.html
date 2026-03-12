@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 2160px; height: 2880px; line-height: 0; overflow: hidden; }
+    svg { display: block; width: 2160px; height: 2880px; }
+  </style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1440" width="2160" height="2880">
+  <defs>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000000" flood-opacity="0.05"/>
+    </filter>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="50"/>
+    </filter>
+    <filter id="blur2">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+    <linearGradient id="quoteHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A8E6CF" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#88D8B0" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#A8E6CF" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="flowLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#88D8B0" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#88D8B0" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#88D8B0" stop-opacity="0"/>
+    </linearGradient>
+    <!-- 底部装饰渐变 -->
+    <linearGradient id="bottomGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFE566" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#FFE566" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#A8E6CF" stop-opacity="0.5"/>
+      <stop offset="80%" stop-color="#88D8B0" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#88D8B0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bottomGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#88D8B0" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#88D8B0" stop-opacity="0.3"/>
+      <stop offset="70%" stop-color="#FFE566" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#FFE566" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ==================== 背景层 ==================== -->
+  <rect width="1080" height="1440" fill="#FFFCF5"/>
+
+  <!-- 柔和渐变背景圆 - 营造温暖氛围 -->
+  <circle cx="540" cy="350" r="350" fill="#A8E6CF" opacity="0.12" filter="url(#blur1)"/>
+  <circle cx="150" cy="900" r="250" fill="#FFF3C4" opacity="0.35" filter="url(#blur1)"/>
+  <circle cx="950" cy="1000" r="200" fill="#88D8B0" opacity="0.18" filter="url(#blur1)"/>
+  <circle cx="800" cy="300" r="120" fill="#FFE566" opacity="0.15" filter="url(#blur2)"/>
+
+  <!-- ==================== 双子座符号 - 优雅水印 ==================== -->
+  <g transform="translate(540, 300)" opacity="0.08">
+    <!-- 更大、更优雅的双子座符号 -->
+    <line x1="-130" y1="-110" x2="130" y2="-110" stroke="#5CAF8E" stroke-width="20" stroke-linecap="round"/>
+    <line x1="-130" y1="110" x2="130" y2="110" stroke="#5CAF8E" stroke-width="20" stroke-linecap="round"/>
+    <line x1="-65" y1="-110" x2="-65" y2="110" stroke="#5CAF8E" stroke-width="20" stroke-linecap="round"/>
+    <line x1="65" y1="-110" x2="65" y2="110" stroke="#5CAF8E" stroke-width="20" stroke-linecap="round"/>
+  </g>
+
+  <!-- ==================== 思维流动装饰 ==================== -->
+  <!-- 左侧流动曲线 - 象征思绪飘动 -->
+  <path d="M 55 380 Q 95 480, 75 580 Q 55 680, 85 780 Q 65 880, 90 950"
+        stroke="#88D8B0" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.35"/>
+  <circle cx="70" cy="400" r="5" fill="#88D8B0" opacity="0.5"/>
+  <circle cx="80" cy="530" r="4" fill="#88D8B0" opacity="0.45"/>
+  <circle cx="65" cy="660" r="6" fill="#88D8B0" opacity="0.35"/>
+  <circle cx="78" cy="800" r="4" fill="#88D8B0" opacity="0.4"/>
+
+  <!-- 右侧流动曲线 -->
+  <path d="M 1025 420 Q 985 520, 1005 620 Q 1025 720, 995 820 Q 1015 920, 990 980"
+        stroke="#88D8B0" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.35"/>
+  <circle cx="1010" cy="450" r="5" fill="#88D8B0" opacity="0.5"/>
+  <circle cx="1000" cy="580" r="4" fill="#88D8B0" opacity="0.45"/>
+  <circle cx="1015" cy="710" r="6" fill="#88D8B0" opacity="0.35"/>
+  <circle cx="1002" cy="850" r="4" fill="#88D8B0" opacity="0.4"/>
+
+  <!-- 顶部装饰点群 - 更精致的排列 -->
+  <g fill="#88D8B0">
+    <circle cx="920" cy="80" r="4" opacity="0.25"/>
+    <circle cx="945" cy="95" r="3" opacity="0.35"/>
+    <circle cx="970" cy="80" r="5" opacity="0.2"/>
+    <circle cx="995" cy="100" r="3" opacity="0.4"/>
+    <circle cx="1020" cy="85" r="4" opacity="0.3"/>
+  </g>
+
+  <!-- ==================== 页面标识 - 精致仪式感 ==================== -->
+  <g transform="translate(540, 85)">
+    <!-- 柔和光晕背景 -->
+    <ellipse cx="0" cy="0" rx="140" ry="45" fill="#88D8B0" opacity="0.06"/>
+    <ellipse cx="0" cy="0" rx="100" ry="32" fill="#A8E6CF" opacity="0.08"/>
+
+    <!-- 精致装饰线条 - 左侧 -->
+    <line x1="-185" y1="0" x2="-90" y2="0" stroke="url(#flowLine)" stroke-width="1.5"/>
+    <!-- 左侧小星星装饰 -->
+    <g transform="translate(-195, 0)">
+      <path d="M0,-5 L1.2,-1.5 L5,0 L1.2,1.5 L0,5 L-1.2,1.5 L-5,0 L-1.2,-1.5 Z" fill="#88D8B0" opacity="0.6"/>
+    </g>
+    <circle cx="-175" cy="-8" r="2" fill="#FFE566" opacity="0.7"/>
+    <circle cx="-165" cy="6" r="1.5" fill="#88D8B0" opacity="0.5"/>
+
+    <!-- 主文字区域 - 带精致边框 -->
+    <rect x="-80" y="-22" width="160" height="44" rx="22" fill="none" stroke="#C8ECD8" stroke-width="1.5"/>
+    <rect x="-76" y="-18" width="152" height="36" rx="18" fill="#F5FDF9" opacity="0.7"/>
+    <text x="0" y="7" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="600" fill="#5CAF8E" text-anchor="middle" letter-spacing="8">写给双子</text>
+
+    <!-- 精致装饰线条 - 右侧 -->
+    <line x1="90" y1="0" x2="185" y2="0" stroke="url(#flowLine)" stroke-width="1.5"/>
+    <!-- 右侧小星星装饰 -->
+    <g transform="translate(195, 0)">
+      <path d="M0,-5 L1.2,-1.5 L5,0 L1.2,1.5 L0,5 L-1.2,1.5 L-5,0 L-1.2,-1.5 Z" fill="#88D8B0" opacity="0.6"/>
+    </g>
+    <circle cx="175" cy="8" r="2" fill="#FFE566" opacity="0.7"/>
+    <circle cx="165" cy="-6" r="1.5" fill="#88D8B0" opacity="0.5"/>
+  </g>
+
+  <!-- ==================== 结语区域 ==================== -->
+  <!-- "写在最后" 标签 -->
+  <g transform="translate(540, 480)">
+    <rect x="-60" y="-18" width="120" height="36" rx="18" fill="#A8E6CF" opacity="0.25"/>
+    <text x="0" y="6" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" fill="#5CAF8E" text-anchor="middle" letter-spacing="2">写在最后</text>
+  </g>
+
+  <!-- 主要结语文字 - 第一段 -->
+  <g transform="translate(540, 580)">
+    <!-- 背景高亮条 - 作为文字底色，位于文字下半部分 -->
+    <rect x="-160" y="-8" width="320" height="22" rx="4" fill="url(#quoteHighlight)"/>
+    <text x="0" y="0" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="42" font-weight="700" fill="#2D3436" text-anchor="middle">你的脑子不是乱</text>
+    <text x="0" y="65" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="42" font-weight="700" fill="#2D3436" text-anchor="middle">只是同时在处理太多信息</text>
+  </g>
+
+  <!-- 分隔装饰 -->
+  <g transform="translate(540, 720)">
+    <circle cx="-30" cy="0" r="3" fill="#88D8B0" opacity="0.6"/>
+    <circle cx="0" cy="0" r="4" fill="#88D8B0" opacity="0.8"/>
+    <circle cx="30" cy="0" r="3" fill="#88D8B0" opacity="0.6"/>
+  </g>
+
+  <!-- 主要结语文字 - 第二段 -->
+  <g transform="translate(540, 790)">
+    <text x="0" y="0" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="42" font-weight="700" fill="#2D3436" text-anchor="middle">那些看似矛盾的想法</text>
+    <!-- 第二行文字的背景高亮 -->
+    <rect x="-220" y="57" width="440" height="22" rx="4" fill="url(#quoteHighlight)"/>
+    <text x="0" y="65" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="42" font-weight="700" fill="#2D3436" text-anchor="middle">都是你丰富内心的证明</text>
+  </g>
+
+  <!-- ==================== END 标记 ==================== -->
+  <g transform="translate(540, 940)">
+    <line x1="-120" y1="0" x2="-45" y2="0" stroke="#C8ECD8" stroke-width="2"/>
+    <rect x="-40" y="-16" width="80" height="32" rx="16" fill="#E8F8F0"/>
+    <text x="0" y="6" font-family="Georgia, serif" font-size="18" font-weight="500" fill="#88D8B0" text-anchor="middle" letter-spacing="4">END</text>
+    <line x1="45" y1="0" x2="120" y2="0" stroke="#C8ECD8" stroke-width="2"/>
+  </g>
+
+  <!-- ==================== 互动引导卡片 ==================== -->
+  <!-- 卡片主体 -->
+  <rect x="120" y="1030" width="840" height="140" rx="24" fill="#FFFFFF" filter="url(#cardShadow)"/>
+
+  <!-- 左侧装饰 - 对话气泡暗示 -->
+  <circle cx="160" cy="1100" r="20" fill="#FFF3C4" opacity="0.6"/>
+  <circle cx="185" cy="1085" r="8" fill="#FFF3C4" opacity="0.4"/>
+
+  <!-- 右侧装饰 -->
+  <circle cx="920" cy="1100" r="20" fill="#D4F5E4" opacity="0.6"/>
+  <circle cx="895" cy="1115" r="8" fill="#D4F5E4" opacity="0.4"/>
+
+  <!-- 卡片内容 - 使用 foreignObject 实现完美居中 -->
+  <foreignObject x="120" y="1030" width="840" height="140">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 10px; line-height: 1.4;">
+      <span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 26px; font-weight: 600; color: #2D3436; line-height: 1;">你也是这样的双子座吗？</span>
+      <span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 20px; color: #636E72; line-height: 1;">评论区告诉我你的「想太多」瞬间 💬</span>
+    </div>
+  </foreignObject>
+
+  <!-- ==================== 标签行 ==================== -->
+  <g transform="translate(540, 1280)">
+    <!-- 标签更紧凑、更有节奏感 -->
+    <rect x="-360" y="-20" width="120" height="40" rx="20" fill="#FFF3C4"/>
+    <text x="-300" y="6" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#2D3436" text-anchor="middle">#双子座</text>
+
+    <rect x="-220" y="-20" width="130" height="40" rx="20" fill="#E8F8F0"/>
+    <text x="-155" y="6" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#2D3436" text-anchor="middle">#星座性格</text>
+
+    <rect x="-70" y="-20" width="110" height="40" rx="20" fill="#FFF3C4"/>
+    <text x="-15" y="6" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#2D3436" text-anchor="middle">#想太多</text>
+
+    <rect x="60" y="-20" width="120" height="40" rx="20" fill="#E8F8F0"/>
+    <text x="120" y="6" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#2D3436" text-anchor="middle">#多线程</text>
+
+    <rect x="200" y="-20" width="120" height="40" rx="20" fill="#FFF3C4"/>
+    <text x="260" y="6" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#2D3436" text-anchor="middle">#高敏感</text>
+  </g>
+
+  <!-- ==================== 底部装饰色条 ==================== -->
+  <!-- 多层渐变色条 - 营造温暖收尾感 -->
+  <g transform="translate(0, 1340)">
+    <!-- 第一层 - 柔和宽色带 -->
+    <rect x="0" y="0" width="1080" height="100" fill="url(#bottomGradient1)" opacity="0.4"/>
+    <!-- 第二层 - 偏移色带 -->
+    <rect x="0" y="20" width="1080" height="80" fill="url(#bottomGradient2)" opacity="0.3"/>
+
+    <!-- 精致装饰线 -->
+    <line x1="200" y1="35" x2="380" y2="35" stroke="#A8E6CF" stroke-width="1" opacity="0.5"/>
+    <line x1="700" y1="35" x2="880" y2="35" stroke="#FFE566" stroke-width="1" opacity="0.5"/>
+
+    <!-- 散点装饰 -->
+    <circle cx="190" cy="35" r="3" fill="#88D8B0" opacity="0.4"/>
+    <circle cx="390" cy="35" r="2.5" fill="#88D8B0" opacity="0.35"/>
+    <circle cx="690" cy="35" r="2.5" fill="#FFE566" opacity="0.5"/>
+    <circle cx="890" cy="35" r="3" fill="#FFE566" opacity="0.45"/>
+
+    <!-- 中心小星星 -->
+    <g transform="translate(540, 35)">
+      <path d="M0,-4 L1,-1 L4,0 L1,1 L0,4 L-1,1 L-4,0 L-1,-1 Z" fill="#88D8B0" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- ==================== 底部账号 ==================== -->
+  <g transform="translate(540, 1400)">
+    <!-- 精致分隔符 -->
+    <circle cx="-45" cy="0" r="2" fill="#C8ECD8" opacity="0.8"/>
+    <line x1="-35" y1="0" x2="35" y2="0" stroke="#D8EFE3" stroke-width="1.5"/>
+    <circle cx="45" cy="0" r="2" fill="#C8ECD8" opacity="0.8"/>
+    <!-- 账号文字 -->
+    <text x="0" y="26" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#9CAF9E" text-anchor="middle" letter-spacing="1">@你的小红书账号</text>
+  </g>
+</svg>
+</body>
+</html>

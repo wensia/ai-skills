@@ -1,0 +1,295 @@
+{
+  "colors": {
+    "warm-apricot": {
+      "name": "原版暖杏",
+      "keywords": ["暖杏", "原版", "温暖", "杏色"],
+      "palette": {
+        "bg_primary": "#FAF6F1",
+        "bg_secondary": "#F5EDE4",
+        "accent": "#DA7756",
+        "accent_soft": "#E8B49A",
+        "text_dark": "#2D2926",
+        "text_muted": "#6B5B4F",
+        "text_light": "#8B7B6B"
+      }
+    },
+    "morandi": {
+      "name": "莫兰迪灰粉",
+      "keywords": ["莫兰迪", "灰粉", "高级灰"],
+      "palette": {
+        "bg_primary": "#F5F0ED",
+        "bg_secondary": "#E8E0DA",
+        "accent": "#C4A08C",
+        "accent_soft": "#D4C4B8",
+        "text_dark": "#4A4540",
+        "text_muted": "#7A7570",
+        "text_light": "#9A9590"
+      }
+    },
+    "milktea": {
+      "name": "奶茶暖棕",
+      "keywords": ["奶茶", "暖棕", "棕色"],
+      "palette": {
+        "bg_primary": "#F8F3ED",
+        "bg_secondary": "#EDE5DB",
+        "accent": "#B8956E",
+        "accent_soft": "#D4C4B0",
+        "text_dark": "#3D3530",
+        "text_muted": "#6D6055",
+        "text_light": "#8D8075"
+      }
+    },
+    "mistyblue": {
+      "name": "雾霾蓝",
+      "keywords": ["雾霾蓝", "蓝色", "冷色"],
+      "palette": {
+        "bg_primary": "#F0F3F5",
+        "bg_secondary": "#E3E8EC",
+        "accent": "#7A9AAD",
+        "accent_soft": "#A8BCC8",
+        "text_dark": "#2D3840",
+        "text_muted": "#5A6A75",
+        "text_light": "#7A8A95"
+      }
+    },
+    "beangreen": {
+      "name": "豆沙绿",
+      "keywords": ["豆沙绿", "绿色", "抹茶"],
+      "palette": {
+        "bg_primary": "#F2F5F0",
+        "bg_secondary": "#E5EBE0",
+        "accent": "#7A9A7A",
+        "accent_soft": "#A8C4A8",
+        "text_dark": "#2D382D",
+        "text_muted": "#5A6A5A",
+        "text_light": "#7A8A7A"
+      }
+    },
+    "parchment": {
+      "name": "羊皮纸",
+      "keywords": ["羊皮纸", "复古", "泛黄"],
+      "palette": {
+        "bg_primary": "#F5F0E6",
+        "bg_secondary": "#EBE4D6",
+        "accent": "#8B7355",
+        "accent_soft": "#C4B49A",
+        "text_dark": "#3D3525",
+        "text_muted": "#6D6050",
+        "text_light": "#8D8070"
+      }
+    },
+    "sunset-coral": {
+      "name": "日落珊瑚",
+      "keywords": ["珊瑚", "日落", "橘色"],
+      "palette": {
+        "bg_primary": "#FDF6F3",
+        "bg_secondary": "#F8EBE5",
+        "accent": "#E07B5C",
+        "accent_soft": "#F0B8A8",
+        "text_dark": "#3D2D28",
+        "text_muted": "#6D5550",
+        "text_light": "#8D7570"
+      }
+    },
+    "lavender": {
+      "name": "薰衣草紫",
+      "keywords": ["薰衣草", "紫色", "淡紫"],
+      "palette": {
+        "bg_primary": "#F5F3F8",
+        "bg_secondary": "#E8E4F0",
+        "accent": "#9A85B0",
+        "accent_soft": "#C4B8D4",
+        "text_dark": "#352D40",
+        "text_muted": "#605570",
+        "text_light": "#807590"
+      }
+    },
+    "mint": {
+      "name": "薄荷绿",
+      "keywords": ["薄荷", "清新", "浅绿"],
+      "palette": {
+        "bg_primary": "#F0F8F5",
+        "bg_secondary": "#E0F0EA",
+        "accent": "#5AA08A",
+        "accent_soft": "#98C8B8",
+        "text_dark": "#253530",
+        "text_muted": "#506560",
+        "text_light": "#708580"
+      }
+    },
+    "sakura": {
+      "name": "樱花粉",
+      "keywords": ["樱花", "粉色", "少女"],
+      "palette": {
+        "bg_primary": "#FDF5F7",
+        "bg_secondary": "#F8E8EC",
+        "accent": "#D4899A",
+        "accent_soft": "#E8B8C4",
+        "text_dark": "#3D2830",
+        "text_muted": "#6D5058",
+        "text_light": "#8D7078"
+      }
+    }
+  },
+  "usages": {
+    "cover": {
+      "name": "封面布局",
+      "keywords": ["封面", "主图"],
+      "dimensions": {"width": 1080, "height": 1440},
+      "settings": {
+        "font_family": "'LXGW WenKai', serif",
+        "icon_size": "120px",
+        "zodiac_name_size": "64px",
+        "zodiac_name_margin": "50px",
+        "headline_size": "72px",
+        "sub_line_size": "42px",
+        "divider_margin": "0 0 70px 0",
+        "sections": {
+          "subtitle": false,
+          "sub_line": true,
+          "body_text": false,
+          "emphasis_box": false,
+          "side_line": false
+        }
+      }
+    },
+    "long": {
+      "name": "长文案布局",
+      "keywords": ["长文案", "内容页", "正文"],
+      "dimensions": {"width": 1080, "height": 1440},
+      "settings": {
+        "font_family": "'LXGW WenKai', serif",
+        "icon_size": "80px",
+        "zodiac_name_size": "48px",
+        "zodiac_name_margin": "30px",
+        "headline_size": "48px",
+        "sub_line_size": "32px",
+        "divider_margin": "0 0 40px 0",
+        "sections": {
+          "subtitle": true,
+          "sub_line": false,
+          "body_text": true,
+          "emphasis_box": true,
+          "side_line": true
+        }
+      }
+    }
+  },
+  "styles": {
+    "classic": {
+      "name": "经典风",
+      "keywords": ["经典", "传统", "标准"],
+      "background": {"type": "solid"},
+      "decorations": {
+        "corners": true,
+        "background_circles": true,
+        "grain_texture": true
+      },
+      "divider": {"type": "dot"}
+    },
+    "minimal": {
+      "name": "极简风",
+      "keywords": ["极简", "简约", "干净"],
+      "background": {"type": "solid"},
+      "decorations": {},
+      "divider": {"type": "line"}
+    },
+    "vintage": {
+      "name": "复古风",
+      "keywords": ["复古", "怀旧", "老式"],
+      "background": {"type": "solid"},
+      "decorations": {
+        "vignette": true,
+        "decorative_border": true,
+        "grain_texture": true
+      },
+      "divider": {"type": "double_line"}
+    },
+    "ins": {
+      "name": "ins风",
+      "keywords": ["ins", "网红", "时尚"],
+      "background": {
+        "type": "gradient",
+        "gradient": {
+          "direction": "180deg",
+          "stops": ["var(--bg-primary)", "var(--bg-secondary)"]
+        }
+      },
+      "decorations": {
+        "blur_circles": true
+      },
+      "divider": {"type": "dot"}
+    },
+    "handwritten": {
+      "name": "手写风",
+      "keywords": ["手写", "涂鸦", "随性"],
+      "background": {"type": "solid"},
+      "decorations": {
+        "grain_texture": true
+      },
+      "divider": {"type": "doodle"},
+      "typography": {
+        "font_override": "'LXGW WenKai', cursive"
+      }
+    },
+    "paper": {
+      "name": "纸质风",
+      "keywords": ["纸质", "纸张", "笔记"],
+      "background": {"type": "solid"},
+      "decorations": {
+        "grain_texture": true
+      },
+      "divider": {"type": "line"}
+    }
+  },
+  "fonts": {
+    "wenkai": {
+      "name": "霞鹜文楷",
+      "family": "'LXGW WenKai', serif",
+      "css_files": [
+        "fonts/lxgw-wenkai/300.css",
+        "fonts/lxgw-wenkai/500.css",
+        "fonts/lxgw-wenkai/700.css"
+      ]
+    },
+    "songti": {
+      "name": "思源宋体",
+      "family": "'Noto Serif SC', serif",
+      "css_files": [
+        "fonts/300.css",
+        "fonts/400.css",
+        "fonts/500.css",
+        "fonts/600.css"
+      ]
+    },
+    "alibaba": {
+      "name": "阿里巴巴普惠体",
+      "family": "'Alibaba PuHuiTi', sans-serif",
+      "css_files": ["fonts/alibaba/font.css"]
+    },
+    "ziyuan": {
+      "name": "资源圆体",
+      "family": "'Resource Han Rounded', sans-serif",
+      "css_files": ["fonts/ziyuan/font.css"]
+    },
+    "fasmart": {
+      "name": "霞鹜尚智黑",
+      "family": "'LXGW Fasmart Gothic', sans-serif",
+      "css_files": ["fonts/fasmart/font.css"]
+    }
+  },
+  "zodiac": {
+    "白羊座": {"id": "aries", "en": "ARIES"},
+    "金牛座": {"id": "taurus", "en": "TAURUS"},
+    "双子座": {"id": "gemini", "en": "GEMINI"},
+    "巨蟹座": {"id": "cancer", "en": "CANCER"},
+    "狮子座": {"id": "leo", "en": "LEO"},
+    "处女座": {"id": "virgo", "en": "VIRGO"},
+    "天秤座": {"id": "libra", "en": "LIBRA"},
+    "天蝎座": {"id": "scorpio", "en": "SCORPIO"},
+    "射手座": {"id": "sagittarius", "en": "SAGITTARIUS"},
+    "摩羯座": {"id": "capricorn", "en": "CAPRICORN"},
+    "水瓶座": {"id": "aquarius", "en": "AQUARIUS"},
+    "双鱼座": {"id": "pisces", "en": "PISCES"}
+  }
+}

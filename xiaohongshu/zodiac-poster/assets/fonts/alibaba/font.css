@@ -1,0 +1,8 @@
+/* 阿里巴巴普惠体 - Alibaba PuHuiTi */
+@font-face {
+  font-family: 'Alibaba PuHuiTi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(./AliPuHui.woff2) format('woff2');
+}

@@ -1,0 +1,53 @@
+<!-- [STYLE: 趣味测试风] [TYPE: page] -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1440" width="1080" height="1440">
+  <defs>
+    <filter id="cardShadow" x="-5%" y="-5%" width="115%" height="120%">
+      <feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#1A1A1A" flood-opacity="1"/>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1080" height="1440" fill="#FFFEF5"/>
+
+  <!-- 装饰形状 -->
+  <circle cx="920" cy="160" r="90" fill="#FFE135"/>
+  <rect x="800" y="300" width="100" height="100" rx="25" fill="#00BFA5" transform="rotate(15, 850, 350)"/>
+  <circle cx="100" cy="1100" r="40" fill="#FF7043"/>
+  <rect x="880" y="1200" width="180" height="45" rx="22" fill="#C6FF00" transform="rotate(-8, 970, 1222)"/>
+
+  <!-- 巨大星座符号装饰 -->
+  <text x="700" y="1280" font-family="Arial, sans-serif" font-size="320" fill="#FFF176" opacity="0.12">{{ZODIAC_SYMBOL}}</text>
+
+  <!-- 头部徽章 -->
+  <rect x="70" y="70" width="{{BADGE_WIDTH}}" height="56" rx="28" fill="#1A1A1A"/>
+  <text x="98" y="108" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" font-weight="500" fill="#FFFFFF">{{BADGE_TEXT}}</text>
+
+  <!-- 主标题 -->
+  <text x="70" y="220" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="72" font-weight="800" fill="#1A1A1A">{{TITLE_LINE1}}</text>
+  <text x="70" y="310" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="72" font-weight="800" fill="#1A1A1A">{{TITLE_LINE2}}</text>
+
+  <!-- 副标题框 -->
+  <rect x="70" y="350" width="{{SUBTITLE_WIDTH}}" height="58" rx="14" fill="#FFE135"/>
+  <text x="100" y="390" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="600" fill="#1A1A1A">{{SUBTITLE}}</text>
+
+  <!-- 问题提示 -->
+  <circle cx="100" cy="500" r="28" fill="#00BFA5"/>
+  <text x="92" y="510" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#FFFFFF">?</text>
+  <text x="150" y="510" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="600" fill="#1A1A1A">{{QUESTION_HINT}}</text>
+
+  <!-- 选项卡片区域 -->
+  <g id="options">
+    {{OPTIONS}}
+  </g>
+
+  <!-- 结果卡片 -->
+  <rect x="70" y="820" width="940" height="300" rx="32" fill="#1A1A1A"/>
+  <g id="result">
+    {{RESULT_CONTENT}}
+  </g>
+
+  <!-- 底部CTA -->
+  <text x="70" y="1340" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" fill="#4A4A4A">{{CTA_TEXT}}</text>
+  <rect x="750" y="1295" width="200" height="64" rx="32" fill="#FFE135" stroke="#1A1A1A" stroke-width="4"/>
+  <text x="790" y="1337" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#1A1A1A">{{CTA_BUTTON}}</text>
+</svg>

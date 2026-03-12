@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 2160px; height: 2880px; }
+  </style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1440" width="2160" height="2880">
+  <defs>
+    <filter id="cardShadow" x="-5%" y="-5%" width="115%" height="120%">
+      <feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#1A1A1A" flood-opacity="1"/>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1080" height="1440" fill="#FFFEF5"/>
+
+  <!-- 装饰形状 -->
+  <circle cx="920" cy="160" r="90" fill="#FFE135"/>
+  <rect x="800" y="300" width="100" height="100" rx="25" fill="#00BFA5" transform="rotate(15, 850, 350)"/>
+  <circle cx="100" cy="1100" r="40" fill="#FF7043"/>
+  <rect x="880" y="1200" width="180" height="45" rx="22" fill="#C6FF00" transform="rotate(-8, 970, 1222)"/>
+
+  <!-- 巨大星座符号装饰 - SVG图标 -->
+  <g transform="translate(500, 950)" opacity="0.08">
+    <svg width="350" height="350" viewBox="0 0 100 100">
+      <line x1="25" y1="20" x2="75" y2="20" stroke="#FFE135" stroke-width="6" stroke-linecap="round"/>
+      <line x1="25" y1="80" x2="75" y2="80" stroke="#FFE135" stroke-width="6" stroke-linecap="round"/>
+      <line x1="35" y1="20" x2="35" y2="80" stroke="#FFE135" stroke-width="6" stroke-linecap="round"/>
+      <line x1="65" y1="20" x2="65" y2="80" stroke="#FFE135" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+  </g>
+
+  <!-- 头部徽章 -->
+  <rect x="70" y="70" width="260" height="56" rx="28" fill="#1A1A1A"/>
+  <!-- 星座图标和文字组 - 水平垂直居中 -->
+  <g transform="translate(200, 98)">
+    <!-- 内容整体居中：图标20px + 间距8px + 文字约104px = 132px，偏移-66 -->
+    <g transform="translate(-66, 0)">
+      <!-- SVG 图标 (20x20) 垂直居中 -->
+      <g transform="translate(0, -10)">
+        <line x1="0" y1="0" x2="20" y2="0" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="20" x2="20" y2="20" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+        <line x1="5" y1="0" x2="5" y2="20" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+        <line x1="15" y1="0" x2="15" y2="20" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <!-- 文字 -->
+      <text x="28" y="0" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" font-weight="500" fill="#FFFFFF" dominant-baseline="central">双子座测试</text>
+    </g>
+  </g>
+
+  <!-- 主标题 -->
+  <text x="70" y="220" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="72" font-weight="800" fill="#1A1A1A">遇到社交场合</text>
+  <text x="70" y="310" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="72" font-weight="800" fill="#1A1A1A">你会怎么做？</text>
+
+  <!-- 副标题框 -->
+  <rect x="70" y="350" width="280" height="58" rx="14" fill="#FFE135"/>
+  <text x="100" y="390" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="600" fill="#1A1A1A">测测你的社交模式</text>
+
+  <!-- 问题提示 -->
+  <circle cx="100" cy="500" r="28" fill="#00BFA5"/>
+  <text x="92" y="510" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#FFFFFF">?</text>
+  <text x="150" y="510" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="600" fill="#1A1A1A">选择最符合你的选项</text>
+
+  <!-- 选项卡片A -->
+  <g filter="url(#cardShadow)">
+    <rect x="70" y="570" width="940" height="100" rx="24" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="3"/>
+  </g>
+  <rect x="100" y="595" width="50" height="50" rx="25" fill="#FF7043"/>
+  <text x="117" y="630" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">A</text>
+  <text x="180" y="632" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="500" fill="#1A1A1A">主动出击，和所有人聊天</text>
+
+  <!-- 选项卡片B -->
+  <g filter="url(#cardShadow)">
+    <rect x="70" y="700" width="940" height="100" rx="24" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="3"/>
+  </g>
+  <rect x="100" y="725" width="50" height="50" rx="25" fill="#00BFA5"/>
+  <text x="117" y="760" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">B</text>
+  <text x="180" y="762" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="500" fill="#1A1A1A">找个角落，等熟人来找我</text>
+
+  <!-- 结果卡片 -->
+  <rect x="70" y="860" width="940" height="280" rx="32" fill="#1A1A1A"/>
+
+  <!-- 结果内容 -->
+  <rect x="100" y="890" width="200" height="50" rx="25" fill="#FFE135"/>
+  <text x="130" y="925" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#1A1A1A">选A的双子</text>
+
+  <text x="100" y="1000" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="32" font-weight="600" fill="#FFFFFF">外向型双子：社交能量爆棚</text>
+  <text x="100" y="1060" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" fill="#888888">你的魅力在于主动和热情</text>
+
+  <!-- 底部CTA -->
+  <text x="70" y="1340" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="26" fill="#4A4A4A">下一题看看更多测试 →</text>
+  <rect x="750" y="1295" width="200" height="64" rx="32" fill="#FFE135" stroke="#1A1A1A" stroke-width="4"/>
+  <text x="790" y="1337" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#1A1A1A">继续测试</text>
+</svg>
+</body>
+</html>

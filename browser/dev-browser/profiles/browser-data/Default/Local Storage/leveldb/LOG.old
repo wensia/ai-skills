@@ -1,0 +1,24 @@
+2026/01/16-11:00:56.547 53a16b Reusing MANIFEST /Users/panyuhang/.claude/skills/dev-browser/profiles/browser-data/Default/Local Storage/leveldb/MANIFEST-000001
+2026/01/16-11:00:56.549 53a16b Recovering log #34
+2026/01/16-11:00:56.551 53a16b Reusing old log /Users/panyuhang/.claude/skills/dev-browser/profiles/browser-data/Default/Local Storage/leveldb/000034.log 
+2026/01/16-11:29:51.528 53a16e Level-0 table #38: started
+2026/01/16-11:29:51.531 53a16e Level-0 table #38: 20002 bytes OK
+2026/01/16-11:29:51.532 53a16e Delete type=0 #34
+2026/01/16-11:29:51.535 53a16b Compacting 4@0 + 1@1 files
+2026/01/16-11:29:51.542 53a16b Generated table #39@0: 34 keys, 26690 bytes
+2026/01/16-11:29:51.542 53a16b Compacted 4@0 + 1@1 files => 26690 bytes
+2026/01/16-11:29:51.543 53a16b compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/01/16-11:29:51.543 53a16b Delete type=2 #38
+2026/01/16-11:29:51.543 53a16b Delete type=2 #35
+2026/01/16-11:29:51.543 53a16b Delete type=2 #33
+2026/01/16-11:29:51.543 53a16b Delete type=2 #27
+2026/01/16-11:29:51.543 53a16b Delete type=2 #30
+2026/01/16-12:09:51.628 53a16e Level-0 table #41: started
+2026/01/16-12:09:51.635 53a16e Level-0 table #41: 20037 bytes OK
+2026/01/16-12:09:51.638 53a16e Delete type=0 #37
+2026/01/16-12:49:51.643 53a16e Level-0 table #43: started
+2026/01/16-12:49:51.647 53a16e Level-0 table #43: 19138 bytes OK
+2026/01/16-12:49:51.653 53a16e Delete type=0 #40
+2026/01/16-13:29:51.625 53a16e Level-0 table #45: started
+2026/01/16-13:29:51.627 53a16e Level-0 table #45: 19251 bytes OK
+2026/01/16-13:29:51.632 53a16e Delete type=0 #42

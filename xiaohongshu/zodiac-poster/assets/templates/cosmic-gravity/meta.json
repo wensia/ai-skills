@@ -1,0 +1,18 @@
+{
+  "id": "cosmic-gravity",
+  "name": "星际引力风",
+  "description": "深紫蓝太空主题、星星粒子装饰、引力轨道线条，适合星座配对、宇宙能量、神秘感内容",
+  "accent_color": "#A78BDA",
+  "secondary_color": "#7DB8C9",
+  "background": "深空渐变 (#1A1525 → #252035 → #1E1A2E)",
+  "suitable_for": ["星座配对", "宇宙能量", "神秘感", "深度解读"],
+  "fonts": ["Noto Serif SC", "Noto Sans SC", "Georgia"],
+  "page_types": ["cover", "page", "summary"],
+  "canvas_size": {
+    "width": 1080,
+    "height": 1440
+  },
+  "features": ["星星粒子", "引力轨道", "深空背景", "渐变光晕"],
+  "created_at": "2026-01-08",
+  "updated_at": "2026-01-08"
+}

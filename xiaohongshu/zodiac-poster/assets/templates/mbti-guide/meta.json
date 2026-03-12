@@ -1,0 +1,37 @@
+{
+  "id": "mbti-guide",
+  "name": "MBTI人格指南",
+  "description": "MBTI十六型人格完全指南套图，包含四维度解析和四大族群详解，共11页",
+  "accent_color": "#D97757",
+  "secondary_colors": {
+    "NT": "#D97757",
+    "NF": "#E8A088",
+    "SJ": "#5B9A8B",
+    "SP": "#C4915E"
+  },
+  "background": {
+    "light": "#F4F3EE",
+    "dark": "#1A1A1A"
+  },
+  "fonts": ["Noto Serif CJK SC", "Georgia"],
+  "canvas_size": {
+    "width": 2160,
+    "height": 2880
+  },
+  "page_count": 11,
+  "page_types": [
+    "cover",
+    "intro",
+    "dimension-ei",
+    "dimension-sn",
+    "dimension-tf",
+    "dimension-jp",
+    "group-nt",
+    "group-nf",
+    "group-sj",
+    "group-sp",
+    "ending"
+  ],
+  "suitable_for": ["MBTI人格解析", "心理学科普", "人格类型介绍", "知识科普"],
+  "created_at": "2026-01-10"
+}

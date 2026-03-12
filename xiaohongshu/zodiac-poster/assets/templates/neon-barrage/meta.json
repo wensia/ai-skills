@@ -1,0 +1,17 @@
+{
+  "id": "neon-barrage",
+  "name": "霓虹弹幕风",
+  "description": "深色背景、霓虹渐变、弹幕气泡式布局，适合脑内弹幕、深夜电台、内心独白、碎碎念类内容",
+  "accent_color": "#8B5CF6",
+  "accent_gradient": "#8B5CF6 → #06B6D4 → #10B981",
+  "background": "#0F0F1A",
+  "suitable_for": ["脑内弹幕", "深夜电台", "内心独白", "碎碎念", "凌晨emo"],
+  "fonts": ["PingFang SC", "Microsoft YaHei"],
+  "page_types": ["cover", "page", "summary"],
+  "canvas_size": {
+    "width": 1080,
+    "height": 1440
+  },
+  "created_at": "2026-01-05",
+  "updated_at": "2026-01-05"
+}

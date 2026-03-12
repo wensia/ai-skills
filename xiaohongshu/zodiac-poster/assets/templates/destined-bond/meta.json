@@ -1,0 +1,18 @@
+{
+  "id": "destined-bond",
+  "name": "命定之约风",
+  "description": "双星座对称布局、无限符号连接、暖棕色调，适合星座配对、CP分析、缘分解读",
+  "accent_color": "#B86B4A",
+  "secondary_color": "#8B7355",
+  "background": "渐变暖棕色 (#FDF8F4 → #F8EDE5 → #F2E4D8)",
+  "suitable_for": ["星座配对", "CP分析", "缘分解读", "关系解析"],
+  "fonts": ["Noto Serif SC", "Noto Sans SC", "Georgia"],
+  "page_types": ["cover", "page", "summary"],
+  "canvas_size": {
+    "width": 1080,
+    "height": 1440
+  },
+  "features": ["双星座图标", "对称布局", "∞无限符号", "配对指数"],
+  "created_at": "2026-01-08",
+  "updated_at": "2026-01-08"
+}

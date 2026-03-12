@@ -1,0 +1,68 @@
+<!-- [STYLE: 命定之约风] [TYPE: page] -->
+<svg width="1080" height="1440" viewBox="0 0 1080 1440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@300;400;500&amp;display=swap');
+    </style>
+    <linearGradient id="bgGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FDF8F4"/>
+      <stop offset="50%" stop-color="#F8EDE5"/>
+      <stop offset="100%" stop-color="#F2E4D8"/>
+    </linearGradient>
+    <linearGradient id="lightOverlay" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF" stop-opacity="0.25"/>
+      <stop offset="20%" stop-color="#FFF" stop-opacity="0"/>
+      <stop offset="80%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1080" height="1440" fill="url(#bgGradient)"/>
+  <rect width="1080" height="1440" fill="url(#lightOverlay)"/>
+
+  <!-- 页眉 -->
+  <g id="header">
+    <text x="100" y="130" font-family="Noto Serif SC, serif" font-size="32" font-weight="500" fill="#B86B4A" letter-spacing="2">射手座 × 狮子座</text>
+    <text x="360" y="130" font-family="Georgia, serif" font-size="24" fill="#D4C9BE">·</text>
+    <text x="385" y="130" font-family="Noto Sans SC, sans-serif" font-size="24" font-weight="300" fill="#7D7067" letter-spacing="3">命定之约</text>
+    <g transform="translate(940, 110)">
+      <path d="M-15,0 C-15,-10 -5,-10 0,0 C5,10 15,10 15,0 C15,-10 5,-10 0,0 C-5,10 -15,10 -15,0" fill="none" stroke="#B86B4A" stroke-width="1.5" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- 章节标签 -->
+  <text x="100" y="220" font-family="Georgia, serif" font-size="24" fill="#B86B4A" letter-spacing="6">BOND 01</text>
+
+  <!-- 章节标题 -->
+  <text x="100" y="310" font-family="Noto Serif SC, serif" font-size="56" font-weight="600" fill="#4A3F35" letter-spacing="4">初见时刻</text>
+
+  <!-- 分隔线 -->
+  <rect x="100" y="340" width="80" height="3" fill="#B86B4A"/>
+
+  <!-- 正文内容 -->
+  <g id="content" transform="translate(100, 520)">
+    <text y="0" font-family="Noto Serif SC, serif" font-size="32" letter-spacing="2">
+      <tspan fill="#4A3F35">射手的</tspan><tspan fill="#B86B4A">自由洒脱</tspan>
+    </text>
+    <text y="61" font-family="Noto Serif SC, serif" font-size="32" fill="#4A3F35" letter-spacing="2">第一眼就吸引了狮子</text>
+    <text y="122" font-family="Noto Serif SC, serif" font-size="32" letter-spacing="2">
+      <tspan fill="#4A3F35">狮子的</tspan><tspan fill="#B86B4A">王者气场</tspan>
+    </text>
+    <text y="183" font-family="Noto Serif SC, serif" font-size="32" fill="#4A3F35" letter-spacing="2">让射手觉得很有魅力</text>
+    <text y="244" font-family="Noto Serif SC, serif" font-size="32" fill="#4A3F35" letter-spacing="2">两个火象星座相遇</text>
+    <text y="305" font-family="Noto Serif SC, serif" font-size="32" fill="#4A3F35" letter-spacing="2">注定是一场热烈的相吸</text>
+  </g>
+
+  <!-- 引用区块 -->
+  <g id="quote" transform="translate(100, 1050)">
+    <line x1="0" y1="0" x2="0" y2="60" stroke="#B86B4A" stroke-width="3"/>
+    <text x="30" y="40" font-family="Noto Serif SC, serif" font-size="26" font-style="italic" fill="#7D7067" letter-spacing="2">"火象的相遇，注定热烈"</text>
+  </g>
+
+  <!-- 页脚 -->
+  <g id="footer">
+    <line x1="100" y1="1350" x2="980" y2="1350" stroke="#D4C9BE" stroke-width="2"/>
+    <text x="980" y="1390" font-family="Georgia, serif" font-size="28" fill="#7D7067" text-anchor="end" letter-spacing="4">0 2</text>
+  </g>
+</svg>

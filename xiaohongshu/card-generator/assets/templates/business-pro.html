@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>商务专业风格模板</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        // 配色：商务蓝
+        const colors = {
+            primary: '#1a365d',
+            secondary: '#2b6cb0',
+            accent: '#3182ce',
+            gold: '#d69e2e',
+            bg: '#ffffff',
+            text: '#2d3748',
+            muted: '#718096',
+        };
+
+        // 卡片1：封面
+        const CoverCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="400" fill="#1a365d" />
+                {/* 几何装饰 */}
+                <polygon points="0,0 120,0 0,120" fill="#2b6cb0" opacity="0.5" />
+                <polygon points="300,400 180,400 300,280" fill="#2b6cb0" opacity="0.5" />
+                <line x1="0" y1="200" x2="300" y2="200" stroke="#3182ce" strokeWidth="1" opacity="0.3" />
+
+                {/* Logo区域 */}
+                <rect x="30" y="40" width="60" height="60" rx="8" fill="white" opacity="0.1" />
+                <text x="60" y="80" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold">
+                    CO
+                </text>
+
+                {/* 主标题 */}
+                <text x="30" y="180" fill="white" fontSize="28" fontWeight="700" letterSpacing="1">
+                    企业名称
+                </text>
+                <text x="30" y="215" fill="white" fontSize="28" fontWeight="700" letterSpacing="1">
+                    年度报告
+                </text>
+
+                {/* 副标题 */}
+                <rect x="30" y="240" width="50" height="3" fill="#d69e2e" />
+                <text x="30" y="275" fill="rgba(255,255,255,0.8)" fontSize="14">
+                    2024 Annual Report
+                </text>
+
+                {/* 底部信息 */}
+                <text x="30" y="370" fill="rgba(255,255,255,0.6)" fontSize="11">
+                    机密文件 | Confidential
+                </text>
+            </svg>
+        );
+
+        // 卡片2：关键指标
+        const MetricsCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="400" fill="#ffffff" />
+                {/* 顶部色块 */}
+                <rect width="300" height="8" fill="#1a365d" />
+
+                <text x="30" y="50" fill="#1a365d" fontSize="18" fontWeight="700">
+                    核心业绩指标
+                </text>
+                <text x="30" y="70" fill="#718096" fontSize="11">
+                    KEY PERFORMANCE INDICATORS
+                </text>
+
+                {/* 指标卡片 */}
+                <g transform="translate(20, 95)">
+                    {[
+                        { label: '年度营收', value: '¥12.5亿', change: '+23%', up: true },
+                        { label: '净利润率', value: '18.6%', change: '+2.1%', up: true },
+                        { label: '市场份额', value: '32%', change: '+5%', up: true },
+                        { label: '客户满意度', value: '94分', change: '+3分', up: true },
+                    ].map((item, i) => (
+                        <g key={i} transform={`translate(${(i % 2) * 130}, ${Math.floor(i / 2) * 95})`}>
+                            <rect width="120" height="80" rx="6" fill="#f7fafc" stroke="#e2e8f0" strokeWidth="1" />
+                            <text x="15" y="25" fill="#718096" fontSize="11">
+                                {item.label}
+                            </text>
+                            <text x="15" y="52" fill="#1a365d" fontSize="22" fontWeight="700">
+                                {item.value}
+                            </text>
+                            <text x="15" y="70" fill={item.up ? '#38a169' : '#e53e3e'} fontSize="11" fontWeight="500">
+                                {item.change}
+                            </text>
+                        </g>
+                    ))}
+                </g>
+
+                {/* 底部说明 */}
+                <line x1="30" y1="310" x2="270" y2="310" stroke="#e2e8f0" strokeWidth="1" />
+                <text x="30" y="335" fill="#718096" fontSize="10">
+                    数据统计周期：2024年1月-12月
+                </text>
+                <text x="30" y="355" fill="#718096" fontSize="10">
+                    同比基准：2023年同期数据
+                </text>
+
+                <text x="270" y="385" textAnchor="end" fill="#cbd5e0" fontSize="10">
+                    02/04
+                </text>
+            </svg>
+        );
+
+        // 卡片3：业务亮点
+        const HighlightsCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="400" fill="#f7fafc" />
+                <rect width="300" height="8" fill="#d69e2e" />
+
+                <text x="30" y="50" fill="#1a365d" fontSize="18" fontWeight="700">
+                    年度战略亮点
+                </text>
+                <text x="30" y="70" fill="#718096" fontSize="11">
+                    STRATEGIC HIGHLIGHTS
+                </text>
+
+                {/* 亮点列表 */}
+                <g transform="translate(30, 95)">
+                    {[
+                        { num: '01', title: '数字化转型', desc: '完成核心系统云迁移，效率提升40%' },
+                        { num: '02', title: '市场扩展', desc: '新增3个海外市场，国际收入占比达25%' },
+                        { num: '03', title: '产品创新', desc: '发布5款新产品，获得12项专利' },
+                        { num: '04', title: '人才发展', desc: '员工规模增长30%，培训投入翻倍' },
+                    ].map((item, i) => (
+                        <g key={i} transform={`translate(0, ${i * 70})`}>
+                            <rect x="-10" y="-5" width="250" height="60" rx="4" fill="white" stroke="#e2e8f0" strokeWidth="1" />
+                            <text x="10" y="20" fill="#d69e2e" fontSize="20" fontWeight="700">
+                                {item.num}
+                            </text>
+                            <text x="50" y="18" fill="#1a365d" fontSize="14" fontWeight="600">
+                                {item.title}
+                            </text>
+                            <text x="50" y="38" fill="#718096" fontSize="11">
+                                {item.desc}
+                            </text>
+                        </g>
+                    ))}
+                </g>
+
+                <text x="270" y="385" textAnchor="end" fill="#cbd5e0" fontSize="10">
+                    03/04
+                </text>
+            </svg>
+        );
+
+        // 卡片4：展望与联系
+        const OutlookCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="400" fill="#1a365d" />
+                {/* 装饰 */}
+                <rect x="0" y="0" width="300" height="120" fill="#2b6cb0" opacity="0.3" />
+
+                <text x="30" y="50" fill="white" fontSize="18" fontWeight="700">
+                    2025年展望
+                </text>
+                <text x="30" y="70" fill="rgba(255,255,255,0.7)" fontSize="11">
+                    OUTLOOK FOR 2025
+                </text>
+
+                {/* 目标 */}
+                <g transform="translate(30, 100)">
+                    <rect width="240" height="100" rx="6" fill="rgba(255,255,255,0.1)" />
+                    <text x="20" y="35" fill="white" fontSize="13" fontWeight="500">
+                        核心目标
+                    </text>
+                    <text x="20" y="60" fill="rgba(255,255,255,0.8)" fontSize="11">
+                        - 营收增长目标：30%
+                    </text>
+                    <text x="20" y="80" fill="rgba(255,255,255,0.8)" fontSize="11">
+                        - 新市场拓展：2个区域
+                    </text>
+                </g>
+
+                {/* 联系信息 */}
+                <g transform="translate(30, 230)">
+                    <text y="0" fill="#d69e2e" fontSize="12" fontWeight="600">
+                        投资者关系
+                    </text>
+                    <text y="25" fill="rgba(255,255,255,0.8)" fontSize="11">
+                        邮箱：ir@company.com
+                    </text>
+                    <text y="45" fill="rgba(255,255,255,0.8)" fontSize="11">
+                        电话：400-XXX-XXXX
+                    </text>
+                    <text y="65" fill="rgba(255,255,255,0.8)" fontSize="11">
+                        网站：www.company.com
+                    </text>
+                </g>
+
+                {/* 二维码占位 */}
+                <rect x="200" y="240" width="70" height="70" rx="4" fill="white" />
+                <text x="235" y="280" textAnchor="middle" fill="#1a365d" fontSize="9">
+                    扫码关注
+                </text>
+
+                {/* 底部 */}
+                <line x1="30" y1="340" x2="270" y2="340" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+                <text x="150" y="365" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="10">
+                    © 2024 Company Name. All Rights Reserved.
+                </text>
+
+                <text x="270" y="385" textAnchor="end" fill="rgba(255,255,255,0.3)" fontSize="10">
+                    04/04
+                </text>
+            </svg>
+        );
+
+        const App = () => {
+            const [downloading, setDownloading] = useState(false);
+
+            const handleDownload = async () => {
+                setDownloading(true);
+                const cards = [
+                    { id: 'card-1', name: '01_封面' },
+                    { id: 'card-2', name: '02_指标' },
+                    { id: 'card-3', name: '03_亮点' },
+                    { id: 'card-4', name: '04_展望' },
+                ];
+
+                await window.CardUtils.downloadCards(cards, 'business-pro-cards.zip', {
+                    onEnd: () => setDownloading(false),
+                    onError: (err) => alert('下载失败: ' + err.message)
+                });
+            };
+
+            return (
+                <div className="min-h-screen py-10 px-4 pb-24">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                        <div id="card-1" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-xl rounded-lg overflow-hidden">
+                            <CoverCard />
+                        </div>
+                        <div id="card-2" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-xl rounded-lg overflow-hidden">
+                            <MetricsCard />
+                        </div>
+                        <div id="card-3" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-xl rounded-lg overflow-hidden">
+                            <HighlightsCard />
+                        </div>
+                        <div id="card-4" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-xl rounded-lg overflow-hidden">
+                            <OutlookCard />
+                        </div>
+                    </div>
+
+                    <button
+                        onClick={handleDownload}
+                        disabled={downloading}
+                        className={`fixed bottom-8 right-8 z-50 flex items-center gap-2 px-6 py-3 rounded-lg shadow-lg transition-all duration-300 ${downloading
+                            ? 'bg-gray-400 cursor-not-allowed'
+                            : 'bg-blue-900 hover:bg-blue-800 hover:scale-105'
+                            } text-white font-medium`}
+                    >
+                        {downloading ? '打包中...' : '下载全套卡片 (ZIP)'}
+                    </button>
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+{
+  "id": "soft-editorial",
+  "name": "温柔杂志风",
+  "description": "温柔有态度、单栏居中、超大字体、清晰层次、磨砂颗粒质感，适合星座情劫、TOP排名榜单、情感解读类内容",
+  "style": "React",
+
+  "适用场景": ["星座情劫", "TOP排名", "情感解读", "星座配对", "性格分析"],
+  "不适用": ["测试题", "互动投票", "运势预测"],
+
+  "design": {
+    "accent_color": "#d97757",
+    "accent_light": "#e8a08a",
+    "text_color": "#1a1918",
+    "secondary_color": "#7a7265",
+    "mid_gray": "#9a958c",
+    "light_gray": "#e5e2db",
+    "background_light": "linear-gradient(180deg, #faf9f5 0%, #f5f2ea 100%)",
+    "background_dark": "linear-gradient(180deg, #1a1918 0%, #2d2b29 100%)",
+    "blue": "#6a9bcc",
+    "green": "#788c5d",
+    "fonts": ["Noto Serif SC", "Outfit"]
+  },
+
+  "canvas_size": {
+    "width": 1080,
+    "height": 1440
+  },
+
+  "pages": {
+    "component": "SagittariusCards.tsx"
+  },
+
+  "page_count": {
+    "min": 5,
+    "max": 9,
+    "typical": 7
+  },
+
+  "features": {
+    "grain_texture": true,
+    "dark_mode_page": true,
+    "zodiac_icons": ["sagittarius", "capricorn", "pisces", "scorpio"],
+    "top_ranking": true
+  },
+
+  "spec_file": "SPEC.md",
+
+  "created_at": "2026-01-15",
+  "updated_at": "2026-01-15"
+}

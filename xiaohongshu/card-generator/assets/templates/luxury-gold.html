@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>轻奢黑金风格模板</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #0f0f0f;
+            color: #d4af37;
+            min-height: 100vh;
+        }
+
+        .gold-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const GOLD_GRADIENT = (id) => (
+            <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#bf953f" />
+                <stop offset="25%" stopColor="#fcf6ba" />
+                <stop offset="50%" stopColor="#b38728" />
+                <stop offset="75%" stopColor="#fbf5b7" />
+                <stop offset="100%" stopColor="#aa771c" />
+            </linearGradient>
+        );
+
+        const BorderDecor = () => (
+            <g>
+                <rect x="10" y="10" width="280" height="380" fill="none" stroke="url(#gold1)" strokeWidth="1" />
+                <rect x="15" y="15" width="270" height="370" fill="none" stroke="url(#gold1)" strokeWidth="0.5" opacity="0.5" />
+                {/* Corners */}
+                <path d="M10 40 L10 10 L40 10" stroke="url(#gold1)" strokeWidth="3" fill="none" />
+                <path d="M260 10 L290 10 L290 40" stroke="url(#gold1)" strokeWidth="3" fill="none" />
+                <path d="M10 360 L10 390 L40 390" stroke="url(#gold1)" strokeWidth="3" fill="none" />
+                <path d="M260 390 L290 390 L290 360" stroke="url(#gold1)" strokeWidth="3" fill="none" />
+            </g>
+        );
+
+        const CoverCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    {GOLD_GRADIENT('gold1')}
+                    <radialGradient id="bg-grad" cx="50%" cy="50%" r="70%">
+                        <stop offset="0%" stopColor="#1a1a1a" />
+                        <stop offset="100%" stopColor="#050505" />
+                    </radialGradient>
+                </defs>
+                <rect width="300" height="400" fill="url(#bg-grad)" />
+                <BorderDecor />
+
+                <text x="150" y="140" textAnchor="middle" fill="url(#gold1)" fontSize="12" letterSpacing="3" fontFamily="Playfair Display">
+                    PREMIUM COLLECTION
+                </text>
+
+                <text x="150" y="200" textAnchor="middle" fill="url(#gold1)" fontSize="48" fontWeight="bold" fontFamily="Playfair Display" letterSpacing="-1">
+                    LUXURY
+                </text>
+
+                <line x1="80" y1="220" x2="220" y2="220" stroke="url(#gold1)" strokeWidth="1" />
+
+                <text x="150" y="250" textAnchor="middle" fill="#888" fontSize="12" letterSpacing="1" fontStyle="italic" fontFamily="Playfair Display">
+                    timeless elegance
+                </text>
+
+                <path d="M145 320 L150 325 L155 320 L150 315 Z" fill="url(#gold1)" />
+            </svg>
+        );
+
+        const InvitationCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    {GOLD_GRADIENT('gold2')}
+                </defs>
+                <rect width="300" height="400" fill="#050505" />
+                <rect x="20" y="20" width="260" height="360" fill="none" stroke="rgba(212, 175, 55, 0.3)" />
+
+                <text x="150" y="80" textAnchor="middle" fill="white" fontSize="10" letterSpacing="4">INVITATION</text>
+
+                <text x="150" y="150" textAnchor="middle" fill="url(#gold2)" fontSize="28" fontFamily="Playfair Display">
+                    Golden Gala
+                </text>
+
+                <text x="150" y="180" textAnchor="middle" fill="#aaa" fontSize="12">
+                    SATURDAY, DEC 24TH
+                </text>
+                <text x="150" y="200" textAnchor="middle" fill="#aaa" fontSize="12">
+                    7:00 PM
+                </text>
+
+                <line x1="120" y1="230" x2="180" y2="230" stroke="url(#gold2)" opacity="0.5" />
+
+                <text x="150" y="280" textAnchor="middle" fill="#d4af37" fontSize="14" fontFamily="Playfair Display">
+                    Grand Ballroom
+                </text>
+                <text x="150" y="300" textAnchor="middle" fill="#666" fontSize="10">
+                    123 Luxury Avenue, NY
+                </text>
+            </svg>
+        );
+
+        const MembershipCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    {GOLD_GRADIENT('gold3')}
+                    <linearGradient id="card-shine" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="rgba(255,255,255,0.1)" />
+                        <stop offset="50%" stopColor="rgba(255,255,255,0)" />
+                    </linearGradient>
+                </defs>
+                <rect width="300" height="400" fill="#080808" />
+
+                {/* 模拟卡片实体 */}
+                <rect x="25" y="125" width="250" height="150" rx="10" fill="#111" stroke="url(#gold3)" strokeWidth="2" />
+                <rect x="25" y="125" width="250" height="150" rx="10" fill="url(#card-shine)" />
+
+                <text x="50" y="160" fill="url(#gold3)" fontSize="16" fontWeight="bold" letterSpacing="1">MEMBER</text>
+                <text x="50" y="220" fill="#fff" fontSize="18" letterSpacing="2" fontFamily="monospace">0000 8888 9999</text>
+
+                <text x="50" y="250" fill="#666" fontSize="8">VALID THRU</text>
+                <text x="90" y="250" fill="#ccc" fontSize="10">12/28</text>
+
+                <circle cx="240" cy="240" r="15" fill="none" stroke="rgba(255,255,255,0.2)" />
+                <circle cx="255" cy="240" r="15" fill="none" stroke="rgba(255,255,255,0.2)" />
+
+                <text x="150" y="80" textAnchor="middle" fill="white" fontSize="18" fontFamily="Playfair Display">VIP Access</text>
+                <text x="150" y="350" textAnchor="middle" fill="#444" fontSize="10">Exclusive Privileges</text>
+            </svg>
+        );
+
+        const QuoteEleganceCard = () => (
+            <svg viewBox="0 0 300 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    {GOLD_GRADIENT('gold4')}
+                </defs>
+                <rect width="300" height="400" fill="#0a0a0a" />
+
+                <text x="150" y="80" textAnchor="middle" fill="url(#gold4)" fontSize="60" fontFamily="serif" opacity="0.3">”</text>
+
+                <foreignObject x="40" y="120" width="220" height="200">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style={{ color: '#e5e5e5', fontSize: '18px', fontFamily: 'Playfair Display', textAlign: 'center', lineHeight: '1.6', fontStyle: 'italic' }}>
+                        Simplicity is the keynote of all true elegance.
+                    </div>
+                </foreignObject>
+
+                <line x1="130" y1="280" x2="170" y2="280" stroke="url(#gold4)" />
+
+                <text x="150" y="310" textAnchor="middle" fill="url(#gold4)" fontSize="12" letterSpacing="1">COCO CHANEL</text>
+            </svg>
+        );
+
+        const App = () => {
+            const [downloading, setDownloading] = useState(false);
+
+            const handleDownload = async () => {
+                setDownloading(true);
+                const cards = [
+                    { id: 'card-cover', name: '01_Cover' },
+                    { id: 'card-invite', name: '02_Invite' },
+                    { id: 'card-member', name: '03_Member' },
+                    { id: 'card-quote', name: '04_Quote' },
+                ];
+
+                await window.CardUtils.downloadCards(cards, 'luxury-gold-cards.zip', {
+                    onEnd: () => setDownloading(false),
+                    onError: (err) => alert('Error: ' + err.message)
+                });
+            };
+
+            return (
+                <div className="min-h-screen py-10 px-4 pb-24">
+                    <div className="text-center mb-12">
+                        <h1 className="text-4xl text-[#d4af37] font-serif mb-2">Luxury Gold</h1>
+                        <p className="text-gray-600">经典黑金轻奢系列</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                        <div id="card-cover" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-2xl rounded-sm border border-[#333]">
+                            <CoverCard />
+                        </div>
+                        <div id="card-invite" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-2xl rounded-sm border border-[#333]">
+                            <InvitationCard />
+                        </div>
+                        <div id="card-member" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-2xl rounded-sm border border-[#333]">
+                            <MembershipCard />
+                        </div>
+                        <div id="card-quote" className="aspect-[3/4] w-full max-w-[300px] mx-auto shadow-2xl rounded-sm border border-[#333]">
+                            <QuoteEleganceCard />
+                        </div>
+                    </div>
+
+                    <button
+                        onClick={handleDownload}
+                        disabled={downloading}
+                        className={`fixed bottom-8 right-8 z-50 flex items-center gap-2 px-8 py-3 rounded-none border border-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-300 ${downloading
+                                ? 'bg-gray-900 text-gray-500 cursor-not-allowed'
+                                : 'bg-[#0f0f0f] hover:bg-[#1a1a1a] text-[#d4af37] hover:scale-105'
+                            }`}
+                    >
+                        {downloading ? 'Processing...' : 'Download Collection'}
+                    </button>
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>
