@@ -1,10 +1,8 @@
 # claude-skills
 
-Claude Code Skills 集合，按领域组织。
+自建 Claude Code Skills 集合。
 
-## 目录结构
-
-### xiaohongshu/ — 小红书完整工作流
+## xiaohongshu/ — 小红书完整工作流
 
 从爆款采集到内容生成、海报制作、发布、互动的全链路 skills。
 
@@ -22,25 +20,6 @@ Claude Code Skills 集合，按领域组织。
 | sync-templates | 同步模板到飞书表 |
 | publish-to-xiaohongshu | 发布到小红书 |
 | reply-comments | 评论回复 |
-
-### browser/ — 浏览器自动化
-
-| Skill | 说明 |
-|-------|------|
-| agent-browser | 轻量浏览器交互（截图、表单、数据提取） |
-| dev-browser | 开发用浏览器服务（Hono + Playwright） |
-
-### creative/ — 创意设计
-
-| Skill | 说明 |
-|-------|------|
-| brand-guidelines | Anthropic 品牌色彩与排版规范 |
-
-### productivity/ — 效率工具
-
-| Skill | 说明 |
-|-------|------|
-| prompt-coach | 分析会话日志，优化 prompt 质量 |
 
 ## 配置
 
