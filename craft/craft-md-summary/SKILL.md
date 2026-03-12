@@ -88,15 +88,23 @@ Sortable, filterable, groupable. The workhorse for structured data.
 | `text` | String | Plain text | `"John"` → John |
 | `number` | Number | Comma-formatted | `1500000` → 1,500,000 |
 | `currency` | Raw number | Dollar amount | `4200000` → $4,200,000 |
-| `percent` | Decimal 0–1 | Colored % | `0.152` → +15.2% (green) |
+| `percent` | Decimal 0–1 | Colored %, +/- prefix | `0.152` → +15.2% (green), `-0.03` → -3.0% (red) |
 | `boolean` | `true`/`false` | Yes / No | `true` → Yes |
 | `date` | `YYYY-MM-DD` | Formatted date | `"2025-01-15"` → Jan 15, 2025 |
 | `badge` | String | Colored pill | `"Active"` → green pill |
 
-**Badge colors** (case-insensitive):
-- **Green:** active, passing, success, done, connected, enabled, approved, completed
-- **Red:** revoked, failed, error, cancelled, disabled, rejected, blocked
-- **Gray:** Everything else (pending, draft, unknown, custom strings)
+**Badge colors** (case-insensitive, exact match only):
+- **Green:** `active`, `passing`, `success`, `done`
+- **Red:** `revoked`, `failed`, `error`
+- **Gray:** Everything else — any string not listed above gets gray styling
+
+The renderer does exact lowercase matching. Strings like "completed", "enabled", "cancelled"
+will render as **gray**, not green/red. If you need colored badges, use the exact words above.
+
+**Critical: both `columns` AND `rows` required.** The renderer validates that the JSON
+contains both `Array.isArray(columns)` and `Array.isArray(rows)` for inline data. If either
+is missing, the block falls back to a raw JSON code block. The only alternative is providing
+a `"src"` field for file-backed data.
 
 **datatable vs markdown table:** Use markdown tables for ≤ 4 rows of simple text.
 Use datatable when you need sorting/filtering, typed columns, or > 4 rows.
@@ -357,15 +365,43 @@ with its original styling. Convert simple text content to markdown instead.
 
 ---
 
-## Large Datasets: File-Backed Tables
+## Large Datasets: File-Backed Tables with `transform_data`
 
-When a datatable or spreadsheet has 20+ rows, use `"src"` to reference a JSON file
-instead of inlining all data:
+For datasets with 20+ rows, inlining all data wastes tokens. Instead, use the
+`transform_data` tool to write data to a JSON file, then reference it via `"src"`.
+
+### The `transform_data` Tool
+
+Runs a script in an isolated subprocess that reads input files and writes structured JSON.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `language` | `"python3"` \| `"node"` \| `"bun"` | Script runtime |
+| `script` | string | Transform script source code |
+| `inputFiles` | string[] | Input file paths relative to session dir |
+| `outputFile` | string | Output file name (written to session `data/` dir) |
+
+**Path conventions:**
+- Input files are relative to the session directory (`long_responses/`, `data/`, `attachments/`)
+- Output file is just a filename — written to the session `data/` directory
+- Script receives input paths as `sys.argv[1:-1]` (Python) or `process.argv.slice(2, -1)` (Node)
+- The **last argument** (`sys.argv[-1]` / `process.argv.at(-1)`) is always the output path
+
+**Security constraints:** 30-second timeout, no network access, path sandboxing,
+blocked env vars (API keys, tokens).
+
+### Workflow
+
+1. Fetch data via MCP tool or other means
+2. Call `transform_data` to extract/reshape into JSON
+3. Use the **absolute path** returned by `transform_data` as the `"src"` value
 
 ````
 ```datatable
 {
-  "src": "/absolute/path/to/data.json",
+  "src": "/absolute/path/returned/by/transform_data",
   "title": "Transaction History",
   "columns": [
     { "key": "date",   "label": "Date",   "type": "date" },
@@ -376,10 +412,13 @@ instead of inlining all data:
 ```
 ````
 
-The JSON file should contain `{ "rows": [...] }` or a bare array `[...]`.
-Inline `columns` and `title` take precedence over file values.
+**Merge semantics:** Inline `columns` and `title` take precedence over values in the file.
+The JSON file should contain `{ "rows": [...] }`, `{ "title", "columns", "rows" }`, or
+a bare array `[...]`.
 
-Use `transform_data` to prepare JSON from raw API responses, CSVs, or multi-source joins.
+**Important:** Always use the absolute path from the `transform_data` result. Do not
+construct relative paths manually — the renderer resolves via `onReadFile` and relative
+paths will fail.
 
 ---
 
