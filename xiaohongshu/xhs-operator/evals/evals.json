@@ -1,0 +1,89 @@
+{
+  "skill_name": "xhs-operator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我在小红书搜索'独立开发'相关帖子，找到一条讲赚钱经历的笔记，进入评论区看看大家怎么说的",
+      "expected_output": "Claude 应先读取 _知识库.yaml，然后按照搜索笔记→打开笔记→打开评论区的操作逻辑执行，使用 control 命令。最后 observe 展示评论区内容。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "reads_knowledge_base_first",
+          "type": "contains",
+          "description": "操作前先读取知识库",
+          "check": "Read skills/_知识库.yaml 出现在第一个 control 命令之前"
+        },
+        {
+          "name": "uses_correct_search_flow",
+          "type": "sequence",
+          "description": "搜索流程正确：搜索图标→输入→搜索按钮",
+          "check": "按顺序使用 tap(搜索图标) → type/clear-type → tap(搜索按钮)"
+        },
+        {
+          "name": "no_wrong_approaches",
+          "type": "absence",
+          "description": "不使用已知的错误方法",
+          "check": "不使用 adb input text、不直接点发送按钮"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "在当前评论区里，找到那条说'这个方法真好用'的评论，回复说'谢谢认可！欢迎关注交流'",
+      "expected_output": "Claude 应读取知识库确认回复评论逻辑，然后直接执行回复评论技能或按知识库的回复逻辑手动操作：点击评论条→输入→enter提交。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "reads_knowledge_base",
+          "type": "contains",
+          "description": "操作前读取知识库",
+          "check": "读取了 _知识库.yaml"
+        },
+        {
+          "name": "clicks_comment_bar_directly",
+          "type": "contains",
+          "description": "直接点击评论条而非使用错误方法",
+          "check": "点击包含目标评论文本的元素，不使用长按/菜单/气泡图标"
+        },
+        {
+          "name": "uses_enter_not_button",
+          "type": "contains",
+          "description": "用 enter 命令提交而非点击发送按钮",
+          "check": "使用 enter 命令提交回复"
+        },
+        {
+          "name": "updates_knowledge_or_confirms",
+          "type": "contains",
+          "description": "操作后确认结果或更新知识库",
+          "check": "操作后 observe 确认或更新知识库"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "我想在小红书上给一个帖子点赞并收藏，帖子是搜索'React Native'出来的第一条",
+      "expected_output": "Claude 应读取知识库，注意到点赞和收藏操作标记为 verified: false（待验证），采用谨慎的探索方式：先 observe 确认页面状态，尝试操作，根据结果更新知识库。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "reads_knowledge_base",
+          "type": "contains",
+          "description": "操作前读取知识库",
+          "check": "读取了 _知识库.yaml"
+        },
+        {
+          "name": "notes_unverified_status",
+          "type": "contains",
+          "description": "注意到操作未验证并采取谨慎策略",
+          "check": "意识到点赞/收藏操作 verified: false，采用 observe 确认的方式"
+        },
+        {
+          "name": "updates_knowledge_after",
+          "type": "contains",
+          "description": "操作后更新知识库验证状态",
+          "check": "操作成功后将 verified 更新为 true 并记录日期"
+        }
+      ]
+    }
+  ]
+}
