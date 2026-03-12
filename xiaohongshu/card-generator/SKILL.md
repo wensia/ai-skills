@@ -1,6 +1,12 @@
 ---
 name: card-generator
-description: 创建可下载的卡片式宣传网页/海报。当用户需要制作产品介绍卡片、教程卡片、知识科普卡片、小红书风格图文、PPT式滑动展示页时使用。支持多种预设模板（科技风、简约风、渐变风、暗黑风等），生成包含React+SVG的单HTML文件，内置ZIP打包下载功能。
+description: |
+  Generate downloadable card-style poster pages for Xiaohongshu (Little Red Book).
+  Triggers: "make cards", "create poster", "card design", "generate slides",
+  "product intro cards", "tutorial cards", "knowledge cards", "PPT-style pages",
+  "swipe cards", "promotional poster", "制作卡片", "生成海报", "做一组图".
+  Outputs a single HTML file (React + SVG) with built-in ZIP download for high-res PNGs.
+  Supports 11 preset visual templates (tech gradient, minimal, dark terminal, glass morphism, etc.).
 ---
 
 # Card Generator Skill
@@ -30,6 +36,7 @@ description: 创建可下载的卡片式宣传网页/海报。当用户需要制
 | 自然清新 | `nature-fresh.html` | 有机食品、生活方式、环保话题 |
 | 复古蒸汽波 | `retro-vaporwave.html` | 音乐活动、游戏宣发、怀旧主题 |
 | 立体投影 | `shadow-stacked.html` | 图文排版、长文分享、个性语录 |
+
 ## 使用流程
 
 ### 1. 分析用户内容
@@ -41,9 +48,7 @@ description: 创建可下载的卡片式宣传网页/海报。当用户需要制
 
 ### 2. 选择并读取模板
 
-```bash
-读取 `assets/templates/<template-name>.html` 模板文件
-```
+读取 `assets/templates/<template-name>.html` 模板文件作为基础结构。
 
 ### 3. 基于模板生成
 
@@ -56,28 +61,18 @@ description: 创建可下载的卡片式宣传网页/海报。当用户需要制
 ### 4. SVG卡片设计规范
 
 ```jsx
-// 每张卡片的基础结构
 const CardComponent = () => (
   <svg viewBox="0 0 300 400" className="w-full h-full">
-    {/* 背景 */}
     <rect width="300" height="400" fill="..." />
-    
-    {/* 装饰元素 */}
     <circle cx="..." cy="..." r="..." fill="..." opacity="0.1" />
-    
-    {/* 主标题 - y位置约在 80-150 */}
-    <text x="150" y="120" textAnchor="middle" 
+    <text x="150" y="120" textAnchor="middle"
           fill="..." fontSize="28" fontWeight="900">
       标题文字
     </text>
-    
-    {/* 内容区域 - y位置约在 180-300 */}
     <g transform="translate(30, 180)">
       {/* 内容元素 */}
     </g>
-    
-    {/* 底部信息 - y位置约在 350-380 */}
-    <text x="150" y="370" textAnchor="middle" 
+    <text x="150" y="370" textAnchor="middle"
           fill="..." fontSize="14">
       底部说明
     </text>
@@ -87,40 +82,40 @@ const CardComponent = () => (
 
 ### 5. 必需的下载功能
 
-确保包含以下依赖和下载逻辑：
+引入依赖：
 
 ```html
-<!-- 头部引入 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 ```
 
+下载函数将每张 SVG 卡片渲染到 2x Canvas (600x800)，打包为 PNG ZIP：
+
 ```jsx
-// 下载函数核心逻辑
 const handleDownload = async () => {
   const zip = new JSZip();
-  const cardIds = ['card-1', 'card-2', ...]; // 所有卡片ID
-  
+  const cardIds = ['card-1', 'card-2', ...];
+
   for (const [index, id] of cardIds.entries()) {
     const svg = document.querySelector(`#${id} svg`);
-    const svgBlob = new Blob([new XMLSerializer().serializeToString(svg)], 
+    const svgBlob = new Blob([new XMLSerializer().serializeToString(svg)],
                             {type: 'image/svg+xml;charset=utf-8'});
     const url = URL.createObjectURL(svgBlob);
-    
+
     const img = new Image();
     await new Promise(r => { img.onload = r; img.src = url; });
-    
+
     const canvas = document.createElement('canvas');
-    canvas.width = 600; canvas.height = 800; // 2x缩放
+    canvas.width = 600; canvas.height = 800;
     const ctx = canvas.getContext('2d');
     ctx.scale(2, 2);
     ctx.drawImage(img, 0, 0);
-    
+
     const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
     zip.file(`card-${index + 1}.png`, blob);
     URL.revokeObjectURL(url);
   }
-  
+
   const content = await zip.generateAsync({type: 'blob'});
   saveAs(content, 'cards.zip');
 };

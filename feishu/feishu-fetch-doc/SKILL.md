@@ -1,55 +1,46 @@
 ---
 name: feishu-fetch-doc
 description: |
-  获取飞书云文档内容。返回文档的 Markdown 内容，支持处理文档中的图片、文件和画板（需配合 fetch-media 工具）。
+  获取飞书云文档内容（返回 Markdown）。读取飞书文档、知识库文档，并处理文档中的图片、文件和画板。
+
+  **触发场景**：
+  - 用户说"读文档"、"看看这个文档"、"获取文档内容"、"打开飞书文档"
+  - 用户发送飞书文档链接（包含 feishu.cn/docx/ 或 feishu.cn/wiki/）
+  - 用户说"知识库文档"、"wiki 文档"
+  - 用户说"下载文档里的图片"、"获取文档附件"
+  - 需要读取飞书云文档的文本内容
 ---
 
-# feishu_mcp_fetch_doc
+# 获取飞书云文档
 
-获取飞书云文档的 Markdown 内容（Lark-flavored 格式）。
-
-## 重要：图片、文件、画板的处理
-
-**文档中的图片、文件、画板需要通过 `feishu_drive_fetch_media` 工具单独获取！**
-
-### 识别格式
-
-返回的 Markdown 中，媒体文件以 HTML 标签形式出现：
-
-- **图片**：
-  ```html
-  <image token="Rkr8bc75Yopo3gxZPDccMyQenpf" width="1833" height="2491" align="center"/>
-  ```
-
-- **文件**：
-  ```html
-  <view type="1">
-    <file token="G6FWbvXkrojFhPxNNm4cu0XNnph" name="skills.zip"/>
-  </view>
-  ```
-
-- **画板**：
-  ```html
-  <whiteboard token="Z1FjwXuUJh6qM9bagmRcAl7tnAc"/>
-  ```
-
-### 获取步骤
-
-1. 从 HTML 标签中提取 `token` 属性值
-2. 调用 `feishu_drive_fetch_media` 下载：
-   ```json
-   {
-     "action": "fetch",
-     "file_token": "提取的token",
-     "output_path": "/path/to/save/file"
-   }
-   ```
+调用 `feishu_mcp_fetch_doc` 获取文档的 Markdown 内容。
 
 ## 参数
 
-- **`doc_id`**（必填）：文档 token，从 URL 中获取
+- **`doc_id`**（必填）：从 URL 中提取文档 token
   - 云文档：`https://xxx.feishu.cn/docx/doxcnXXXX` → `doxcnXXXX`
   - 知识库：`https://xxx.feishu.cn/wiki/YKx9bRgm9` → `YKx9bRgm9`
+
+## 图片、文件、画板处理
+
+文档中的媒体文件需要通过 `feishu_drive_fetch_media` 单独下载。
+
+返回的 Markdown 中，媒体以 HTML 标签形式出现：
+
+| 类型 | 标记格式 | 示例 |
+|------|---------|------|
+| 图片 | `<image token="xxx" .../>` | `<image token="Rkr8bc75Yopo3gx..." width="1833" height="2491"/>` |
+| 文件 | `<view type="1"><file token="xxx" name="..."/></view>` | `<file token="G6FWbvXkro..." name="skills.zip"/>` |
+| 画板 | `<whiteboard token="xxx"/>` | `<whiteboard token="Z1FjwXuUJh6..."/>` |
+
+提取 `token` 后调用：
+```json
+{
+  "action": "fetch",
+  "file_token": "提取的token",
+  "output_path": "/path/to/save/file"
+}
+```
 
 ## 工具组合
 

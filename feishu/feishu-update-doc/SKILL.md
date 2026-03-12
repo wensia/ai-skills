@@ -1,101 +1,79 @@
 ---
 name: feishu-update-doc
 description: |
-  更新飞书云文档。支持 7 种更新模式：追加、覆盖、定位替换、全文替换、前/后插入、删除。
+  更新飞书云文档内容，支持 7 种更新模式（追加、覆盖、定位替换、全文替换、前/后插入、删除）。当用户需要修改、更新、追加、替换、删除飞书文档中的内容时使用此 skill。触发场景包括用户说"更新文档"、"修改文档"、"在文档里加点内容"、"删掉这一段"、"替换文档中的..."，或任何涉及编辑已有飞书云文档的需求。
 ---
 
-# feishu_mcp_update_doc
+# 更新飞书云文档
 
-通过 MCP 调用 `update-doc`，更新飞书云文档内容，支持 7 种更新模式。优先使用局部更新（replace_range/append/insert_before/insert_after），慎用 overwrite（会清空文档重写，可能丢失图片、评论等）。
+通过 MCP 调用 `update-doc`，更新飞书云文档内容。优先使用局部更新（replace_range/append/insert_before/insert_after），慎用 overwrite（会清空文档重写，可能丢失图片、评论等）。
 
-# 定位方式
+## 7 种更新模式
 
-定位模式（replace_range/replace_all/insert_before/insert_after/delete_range）支持两种定位方式，二选一：
+| 模式 | 用途 | 需要定位 | 需要 markdown |
+|------|------|---------|-------------|
+| append | 追加到末尾 | 否 | 是 |
+| overwrite | 完全覆盖（慎用） | 否 | 是 |
+| replace_range | 定位替换（唯一匹配） | 是 | 是 |
+| replace_all | 全文替换（多处） | 是 | 是 |
+| insert_before | 在匹配内容前插入 | 是 | 是 |
+| insert_after | 在匹配内容后插入 | 是 | 是 |
+| delete_range | 删除匹配内容 | 是 | 否 |
 
-## selection_with_ellipsis - 内容定位
+---
 
-支持两种格式：
+## 定位方式
 
-1. **范围匹配**：`开头内容...结尾内容`
-   - 匹配从开头到结尾的所有内容（包含中间内容）
-   - 建议 10-20 字符确保唯一性
+需要定位的模式（replace_range/replace_all/insert_before/insert_after/delete_range）支持两种方式，二选一：
 
-2. **精确匹配**：`完整内容`（不含 `...`）
-   - 匹配完整的文本内容
-   - 适合替换短文本、关键词等
+### selection_with_ellipsis -- 内容定位
 
-**转义说明**：如果要匹配的内容本身包含 `...`，使用 `\.\.\.` 表示字面量的三个点。
+两种格式：
 
-示例：
-- `你好...世界` → 匹配从"你好"到"世界"之间的任意内容
-- `你好\.\.\.世界` → 匹配字面量 "你好...世界"
+1. **范围匹配**：`开头内容...结尾内容` -- 匹配从开头到结尾的所有内容（含中间部分）。建议 10-20 字符确保唯一性。
+2. **精确匹配**：`完整内容`（不含 `...`）-- 匹配完整文本，适合短文本、关键词。
 
-**建议**：如果文档中有多个 `...`，建议使用更长的上下文来精确定位，避免歧义。
+转义：内容本身包含 `...` 时，用 `\.\.\.` 表示字面量三个点。
 
-## selection_by_title - 标题定位
+### selection_by_title -- 标题定位
 
 格式：`## 章节标题`（可带或不带 # 前缀）
 
 自动定位整个章节（从该标题到下一个同级或更高级标题之前）。
 
-**示例**：
-- `## 功能说明` → 定位二级标题"功能说明"及其下所有内容
-- `功能说明` → 定位任意级别的"功能说明"标题及其内容
+示例：
+- `## 功能说明` -- 定位二级标题"功能说明"及其下所有内容
+- `功能说明` -- 定位任意级别的"功能说明"标题
 
-# 可选参数
+---
 
-## new_title
+## 可选参数
 
-更新文档标题。如果提供此参数，将在更新文档内容后同步更新文档标题。
+### new_title
 
-**特性**：
-- 仅支持纯文本，不支持富文本格式
-- 长度限制：1-800 字符
-- 可以与任何 mode 配合使用
-- 标题更新在内容更新之后执行
+更新文档标题。仅支持纯文本，1-800 字符。标题更新在内容更新之后执行，可与任何 mode 配合使用。
 
+---
 
-# 返回值
+## 返回值
 
-## 成功
-
+成功：
 ```json
 {
   "success": true,
   "doc_id": "文档ID",
   "mode": "使用的模式",
-  "message": "文档更新成功（xxx模式）",
-  "warnings": ["可选警告列表"],
-  "log_id": "请求日志ID"
+  "message": "文档更新成功（xxx模式）"
 }
 ```
 
-## 异步模式（大文档超时）
-
-```json
-{
-  "task_id": "async_task_xxxx",
-  "message": "文档更新已提交异步处理，请使用 task_id 查询状态",
-  "log_id": "请求日志ID"
-}
-```
-
-使用返回的 `task_id` 再次调用 update-doc（仅传 task_id 参数）查询状态。
-
-## 错误
-
-```json
-{
-  "error": "[错误码] 错误消息\n💡 Suggestion: 修复建议\n📍 Context: 上下文信息",
-  "log_id": "请求日志ID"
-}
-```
+异步模式（大文档超时）返回 `task_id`，用该 task_id 再次调用 update-doc（仅传 task_id）查询状态。
 
 ---
 
-# 使用示例
+## 使用示例
 
-## append - 追加到末尾
+### append -- 追加到末尾
 
 ```json
 {
@@ -105,9 +83,9 @@ description: |
 }
 ```
 
-## replace_range - 定位替换
+### replace_range -- 定位替换
 
-使用 `selection_with_ellipsis`：
+用 selection_with_ellipsis：
 ```json
 {
   "doc_id": "文档ID或URL",
@@ -117,7 +95,7 @@ description: |
 }
 ```
 
-使用 `selection_by_title`（替换整个章节）：
+用 selection_by_title（替换整个章节）：
 ```json
 {
   "doc_id": "文档ID或URL",
@@ -127,9 +105,10 @@ description: |
 }
 ```
 
-## replace_all - 全文替换
+### replace_all -- 全文替换
 
-与 replace_range 类似，但支持多处同时替换（replace_range 要求匹配唯一）：
+支持多处同时替换（replace_range 要求唯一匹配）。返回值包含 `replace_count` 字段。
+
 ```json
 {
   "doc_id": "文档ID或URL",
@@ -139,32 +118,9 @@ description: |
 }
 ```
 
-**返回值**包含 `replace_count` 字段，表示替换的次数：
-```json
-{
-  "success": true,
-  "replace_count": 4,
-  "message": "文档更新成功（replace_all模式，替换4处）"
-}
-```
+`markdown` 可为空字符串，表示删除所有匹配内容。
 
-**注意**：
-- 与 `replace_range` 不同，`replace_all` 允许多个匹配
-- 如果没有找到匹配内容，会返回错误
-- `markdown` 可以为空字符串，表示删除所有匹配内容
-
-## insert_before - 前插入
-
-```json
-{
-  "doc_id": "文档ID或URL",
-  "mode": "insert_before",
-  "selection_with_ellipsis": "## 危险操作...数据丢失风险。",
-  "markdown": "> **警告**：以下操作需谨慎！"
-}
-```
-
-## insert_after - 后插入
+### insert_before / insert_after -- 前后插入
 
 ```json
 {
@@ -175,18 +131,8 @@ description: |
 }
 ```
 
-## delete_range - 删除内容
+### delete_range -- 删除内容
 
-使用 `selection_with_ellipsis`：
-```json
-{
-  "doc_id": "文档ID或URL",
-  "mode": "delete_range",
-  "selection_with_ellipsis": "## 废弃章节...不再需要的内容。"
-}
-```
-
-使用 `selection_by_title`（删除整个章节）：
 ```json
 {
   "doc_id": "文档ID或URL",
@@ -195,20 +141,11 @@ description: |
 }
 ```
 
-注意：delete_range 模式不需要 markdown 参数。
+不需要 markdown 参数。
 
-## 同时更新标题和内容
+### 同时更新标题和内容
 
-可以在任何更新模式中添加 `new_title` 参数来同时更新文档标题：
-
-```json
-{
-  "doc_id": "文档ID或URL",
-  "mode": "overwrite",
-  "markdown": "# 项目文档 v2.0\n\n全新的内容...",
-  "new_title": "项目文档 v2.0"
-}
-```
+在任何模式中添加 `new_title` 参数：
 
 ```json
 {
@@ -219,67 +156,35 @@ description: |
 }
 ```
 
-## overwrite - 完全覆盖
-
-⚠️ 会清空文档后重写，可能丢失图片、评论等，仅在需要完全重建文档时使用。
-
-```json
-{
-  "doc_id": "文档ID或URL",
-  "mode": "overwrite",
-  "markdown": "# 新文档\n\n全新的内容..."
-}
-```
-
 ---
 
-# 最佳实践
+## 最佳实践
 
-## 小粒度精确替换
+### 小粒度精确替换
 
-修改文档内容时，**定位范围越小越安全**。尤其是表格、分栏等嵌套块，应精确定位到需要修改的文本，避免影响其他内容。
+定位范围越小越安全。表格、分栏等嵌套块中，应精确定位到需要修改的文本，避免影响其他内容（如图片引用）。
 
-**示例**：表格单元格中有图片和文字，只需修改文字
-- ❌ 替换整个表格或整行 → 可能破坏图片引用
-- ✅ 只定位需要修改的文本 → 图片等其他内容不受影响
+### 保护不可重建的内容
 
+图片、画板、电子表格、多维表格、任务等以 token 形式存储，无法读出后原样写入。替换时避开包含这些内容的区域，精确定位到纯文本部分。
 
-## 保护不可重建的内容
+### 分步更新优于整体覆盖
 
-图片、画板、电子表格、多维表格、任务等内容以 token 形式存储，**无法读出后原样写入**。
+修改多处内容时，多次小范围替换逐步修改，优于用 overwrite 重写整个文档。原因：局部更新保留原有媒体、评论、协作历史。
 
-**保护策略**：
-- 替换时避开包含这些内容的区域
-- 精确定位到纯文本部分进行修改
+### insert 模式的定位注意
 
-## 分步更新优于整体覆盖
+使用 insert_before/insert_after 时，如果目标内容重复出现，需扩大 selection_with_ellipsis 范围来唯一定位。扩大范围时注意：插入位置基于匹配范围的边界（insert_after 在结尾之后，insert_before 在开头之前）。
 
-修改多处内容时：
-- ✅ 多次小范围替换，逐步修改
-- ⚠️ 谨慎使用 `overwrite` 重写整个文档, 除非你认为风险完全可控
+### 修复画板语法错误
 
-**原因**：局部更新保留原有媒体、评论、协作历史，更安全可靠。
-
-## insert 模式扩大定位范围时注意插入位置
-
-使用 `insert_before` 或 `insert_after` 时，如果目标内容重复出现，需要扩大 `selection_with_ellipsis` 范围来唯一定位。
-
-**关键**：插入位置基于匹配范围的**边界**：
-- `insert_after` → 插入在匹配范围的**结尾**之后
-- `insert_before` → 插入在匹配范围的**开头**之前
-
-扩大范围时，确保边界仍然是期望的插入点。
-
-## 修复画板语法错误
-
-当 create-doc 或 update-doc 返回画板写入失败的 warning 时：
+当返回画板写入失败的 warning 时：
 1. warning 中包含 whiteboard 标签（如 `<whiteboard token="xxx"/>`）
-2. 分析错误信息，修正 Mermaid/PlantUML 语法
-3. 用 `replace_range` 替换：`selection_with_ellipsis` 使用 warning 中的 whiteboard 标签，`markdown` 提供修正后的代码块
-4. 重新提交验证
+2. 修正 Mermaid/PlantUML 语法
+3. 用 replace_range 替换：selection_with_ellipsis 使用 warning 中的 whiteboard 标签，markdown 提供修正后的代码块
 
 ---
 
-# 注意事项
+## 注意事项
 
-- **Markdown 语法**：支持飞书扩展语法，详见 create-doc 工具文档
+- **Markdown 语法**：支持飞书扩展语法（Lark-flavored Markdown），详见 feishu-create-doc skill 及其 [Lark Markdown 语法参考](../feishu-create-doc/references/lark-markdown-syntax.md)

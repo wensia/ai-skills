@@ -1,19 +1,17 @@
 ---
 name: sync-templates
 description: |
-  将本地模板同步到飞书「模板库」表。
-  当用户需要：
-  (1) 同步新创建的模板到飞书
-  (2) 更新已有模板的信息
-  (3) 查看本地模板列表
+  Sync local poster templates to Feishu Bitable "模板库" table.
+  Triggers: "sync templates", "upload templates to feishu", "update template library",
+  "同步模板", "更新模板库", "模板同步到飞书", "list local templates".
+  Scans local template directories for meta.json, uploads example images,
+  and creates/updates Feishu Bitable records with template metadata and prompts.
 invocation: user
 ---
 
 # 模板同步 Skill
 
 将 `zodiac-poster` 项目的本地模板同步到飞书「模板库」多维表格。
-
----
 
 ## 飞书配置
 
@@ -24,12 +22,15 @@ table_id: tbl4FKgtMDv3HCWP  # 模板库表
 
 ### 飞书凭证
 
-```
-APP_ID: cli_a9a7190fef38dbb5
-APP_SECRET: CyANTKyK1HhZ569m9vasodAGqsjKwh1u
+从环境变量读取，不要硬编码：
+
+```python
+import os
+APP_ID = os.environ["FEISHU_APP_ID"]
+APP_SECRET = os.environ["FEISHU_APP_SECRET"]
 ```
 
----
+确保运行前已设置 `FEISHU_APP_ID` 和 `FEISHU_APP_SECRET` 环境变量。
 
 ## 模板目录
 
@@ -66,19 +67,15 @@ APP_SECRET: CyANTKyK1HhZ569m9vasodAGqsjKwh1u
 }
 ```
 
----
-
 ## 同步流程
 
 ### 步骤1: 扫描模板目录
 
 ```python
-import os
-import glob
+import os, glob
 
 TEMPLATES_DIR = "/Users/panyuhang/我的项目/编程/脚本/小红书封面生成/skills/zodiac-poster/assets/templates"
 
-# 查找所有包含 meta.json 的模板目录
 template_dirs = [
     d for d in glob.glob(os.path.join(TEMPLATES_DIR, "*"))
     if os.path.isdir(d) and os.path.exists(os.path.join(d, "meta.json"))
@@ -88,40 +85,33 @@ template_dirs = [
 ### 步骤2: 读取模板信息
 
 对每个模板目录：
-
 1. 读取 `meta.json` 获取元信息
 2. 读取 `PROMPT.md` 获取提示词内容
 3. 收集 `examples/*.png` 示例图列表
 
 ### 步骤2.5: SVG 转 PNG (如需要)
 
-如果 `examples/` 目录中有 SVG 但没有对应的 PNG，需要先转换：
+如果 `examples/` 目录中有 SVG 但没有对应 PNG，先转换：
 
 ```python
 import sys
 sys.path.insert(0, '/Users/panyuhang/我的项目/编程/脚本/小红书封面生成/skills/zodiac-poster')
+from utils.screenshot import svg_to_png
 
-from utils.screenshot import svg_to_png, batch_svg_to_png
-
-# 批量转换 SVG 为 2x PNG
 import glob
-svg_files = glob.glob('/path/to/examples/*.svg')
-for svg_path in svg_files:
+for svg_path in glob.glob('/path/to/examples/*.svg'):
     png_path = svg_path.replace('.svg', '.png')
     svg_to_png(svg_path, png_path)  # 输出 2160x2880
 ```
 
-**注意**：使用 Canvas API 方案确保：
-- 精确 2x 分辨率 (2160x2880)
-- 无白边问题
-- 正确渲染中文字体
+使用 Canvas API 方案确保精确 2x 分辨率 (2160x2880)、无白边、正确渲染中文字体。
 
 ### 步骤3: 上传文件到飞书
 
-使用 Python requests 上传文件：
+使用 Python requests 上传（凭证从环境变量读取）：
 
 ```python
-import requests
+import os, requests
 
 def upload_file(token, file_path):
     url = "https://open.feishu.cn/open-apis/drive/v1/medias/upload_all"
@@ -146,7 +136,7 @@ def upload_file(token, file_path):
 使用飞书 MCP 操作记录：
 
 ```javascript
-// 查询是否存在
+// 查询是否已存在
 mcp__lark-mcp__bitable_v1_appTableRecord_search({
   path: { app_token: "Qt6Qbzzy6aWBgassGQhcUU5vngc", table_id: "tbl4FKgtMDv3HCWP" },
   data: {
@@ -180,44 +170,17 @@ mcp__lark-mcp__bitable_v1_appTableRecord_update({
 })
 ```
 
----
-
 ## 使用示例
 
 ```
-# 同步所有模板
-/sync-templates
-
-# 同步指定模板
-/sync-templates personality-monologue
-
-# 查看本地模板列表
-/sync-templates --list
+/sync-templates                          # 同步所有模板
+/sync-templates personality-monologue    # 同步指定模板
+/sync-templates --list                   # 查看本地模板列表
 ```
-
----
 
 ## 输出报告
 
-```markdown
-## 模板同步报告
-
-**时间**: 2026-01-05 17:30:00
-
-### 同步结果
-
-| 模板 | 状态 | 说明 |
-|------|------|------|
-| personality-monologue | ✅ 更新 | 7张示例图 |
-
-### 飞书表格
-
-- **表名**: 模板库
-- **table_id**: tbl4FKgtMDv3HCWP
-- **记录数**: 1
-```
-
----
+完成后输出同步摘要，包括每个模板的状态（新建/更新）、示例图数量，以及飞书表格总记录数。
 
 ## 错误处理
 
