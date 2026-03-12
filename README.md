@@ -1,6 +1,6 @@
-# claude-skills
+# ai-skills
 
-自建 Claude Code Skills 集合。
+AI 编程助手 Skills 集合，适用于 Claude Code / Codex / OpenClaw 等工具。
 
 ## xiaohongshu/ — 小红书完整工作流
 
